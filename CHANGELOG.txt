@@ -1,0 +1,39 @@
+CHANGES
+
+- Removed sounds/Amnesia_Rebirth_GHOUL - SILENT
+- Removed entities/Original - copy of lamp
+- Removed ghouls sounds from entities - already in sounds
+- Removed unnecessary monster assets - brute is just .ent, ghoul centralized in one folder
+- Removed vanilla loading screen images 
+- Moved yz_logo from lang to graphics
+- Added a loop to every map to clear the music queue and prevent bleed
+- Fixed item duplication issue
+- Fixed indentation >:(
+
+- 01_YZHubMap
+	- Locked the old archives door
+	- Removed the unused dagger
+- 01_YZArchives
+	- fixed the cross disappearing based on distance
+- 02_YZOldArchivesSavetest
+	- Removed the test tinderboxes
+- 02_YZUndergroundSectionTest
+	- The key is properly removed from the inventory during DropKeyEvent
+	- Added a locked door sound to the morgue door
+	- Removed the lantern (sewers seem to be the actual location for it)
+	- Disabled interaction with one of the fake rods
+- 02_YZSewerTest
+ 	- Restored the meant-to-be-locked door that was disabled
+	- Smooth water
+
+FLAGS
+- maps/non-used seems redundant. Is there anything necessary? Looks like a waste of 120 megabytes. For now deleted cause it was conflicting with base maps
+- Are assets in entities/lamp just modified .ent files? If so, everything else can be deleted
+- Almost positive the lantern is a copypaste as well. Last modified 2019
+- Any purpose of config/lang_main/english.lang.bak?
+- Death functions have some curious design where they stop playing the music after 15 deaths. Is that intentional? There is nothing else added past that point
+- Nice Minecraft loading screen
+- You didn't mention it before but I found the study key this time around. Either the study should be locked or the key removed from the quarters
+- Why the hell are your maps named like this
+- Sewer has brute chase scripts but no brute in the map
+- non-used folder has normally named maps while the main folder is full of test maps. Then again, the very first maps already teleports you to a "test" map so I have no idea what is considered main here

@@ -1,0 +1,267 @@
+void OnStart()
+{
+	//MUSIC
+	
+	PreloadSound("general_thunder.snt");
+	
+	//MISCELLANEOUS
+	
+	SetEntityInteractionDisabled("mansion_1", true); 
+	SetEntityInteractionDisabled("decoyhammer", true); 
+	SetEntityActive("decoyhammer", false);
+	SetLightVisible("thunder_light", false);
+	AddEntityCollideCallback("Player", "thunder_area", "lightning", true, 1); //lightning event
+	
+	AddTimer("", 24.0f, "thunder");
+	
+	StartScreenShake(0.003, 3, 1, 1);
+	
+	
+	//USEITEM CALLBACKS
+	
+	AddUseItemCallback("", "weakhammer", "hammerarea", "destroyplanks", true);	
+	AddUseItemCallback("", "weakhammer", "strong_plankarea", "too_strong", true);	
+	
+	
+	////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////
+	
+	//THE "NEW" STUDY AREA SCRIPTS UNDER HERE
+	
+	/////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+	
+	SetPropHealth("castle_2", 25);
+	SetEntityInteractionDisabled("castle_2", true);
+	SetEntityInteractionDisabled("castle_6", true);
+	SetEntityInteractionDisabled("puzzle_cross", true);
+	SetLightVisible("ghoul_light", false);
+	SetLightVisible("fire_light", false);
+}
+
+void thunder(string &in asTimer)
+{
+	PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+	AddTimer("", 24.0f, "thunder");	
+}	
+
+void silence(string &in asEntity)
+{	
+	SetEntityActive("music_area", true);
+	StopMusic(2, 1);	
+	AddTimer("", 18.0f, "music");
+}	
+
+void music (string &in asTimer)
+{
+	PlayMusic("study_amb_enzo.ogg", true, 0.5, 5, 1, false);	
+}	
+
+
+void destroy_cross(string &in asParent, string &in asChild, int alState) 
+{
+	SetEntityActive("fakecross",  false);
+	DestroyParticleSystem("fire");
+	FadeLightTo("fire_light", 0, 0, 0, 0, -1, 0.5f);
+}	
+
+void too_strong(string &in asItem, string &in asEntity)
+{
+	SetMessage("Messages", "toostrong", 6);	
+}	
+
+void on_notepickup(string &in asEntity)
+{
+	SetEntityInteractionDisabled("puzzle_cross", false);
+	AddQuest("crosspuzzle", "crosspuzzle");
+	AddEntityCollideCallback("puzzle_cross*", "crossarea", "solve_doorpuzzle", true, 1);
+}	
+
+void solve_doorpuzzle(string &in asParent, string &in asChild, int alState)             //cross to the slot
+{
+	SetEntityActive("puzzle_cross*", false);
+	SetEntityActive("fakecross", true);
+	SetEntityActive("closeddoor", false);
+	SetEntityActive("opendoor", true);
+	SetEntityActive("secretdoor_area", false);
+	SetEntityActive("red_eventarea", true);
+	SetLightVisible("SpotLight_2", false);         //red light "indicator"
+	GiveSanityBoostSmall();
+	AddTimer("", 2.5f, "mystery_event");
+	AddTimer("", 1.0f, "sound");
+	SetPlayerActive(false); 
+	SetPlayerCrouching(false);
+	SetLightVisible("PointLight_7", false);
+	AddEntityCollideCallback("Player", "destroy_area", "destroy_cross", true, 1);
+	CompleteQuest("crosspuzzle", "crosspuzzle");
+	AddGlobalVarInt("fog_int_hub", 1);
+	AddGlobalVarInt("hint_var", 1);
+}	
+
+void mystery_event(string &in asTimer)
+{
+	StartPlayerLookAt("ghoul_area", 1.0f, 1.0f, "");
+	SetEntityActive("ghoul_1", true);
+	AddTimer("", 2.5f, "lightsoff");
+}
+
+void lightsoff(string &in asTimer)
+{
+	SetLampLit("candlestick*", false, true);
+	SetLampLit("hanging_lantern*", false, true);
+	AddTimer("", 3.0f, "scare1");
+}	
+
+void scare1(string &in asEntity)      
+{
+	FadeOut(0.1f);
+	AddTimer("", 0.5f, "scare2");
+}	
+
+void scare2(string &in asTimer)
+{
+	SetEntityActive("ghoul_1", false);
+	SetEntityActive("ghoul_2", true);	
+	SetEnemyDisableTriggers("ghoul_2", true);
+	StartPlayerLookAt("ghoul_lookarea", 200.0f, 200.0f, "");
+	SetLightVisible("ghoul_light", true);
+	PlaySoundAtEntity("", "scare.snt", "Player", 0.0f, false);
+	FadeIn(0.05f);
+	AddTimer("", 0.7f, "scare3");
+	TeleportPlayer("player_area");
+	SetPlayerCrouching(true);
+}	
+
+void scare3(string &in asTimer)
+{
+	FadeOut(0.1f);
+	SetEntityActive("ghoul_2", false);
+	SetLightVisible("ghoul_light", false);
+	AddTimer("", 1.0f, "scare4");	
+}	
+
+void scare4(string &in asTimer)
+{
+	SetPlayerActive(true);
+	FadeIn(1.0f);
+	StopPlayerLookAt();
+	CreateParticleSystemAtEntity("fire", "ps_fire_stove_small.ps", "fakecross", true);
+	SetLightVisible("fire_light", true);
+	StartPlayerLookAt("crossarea", 3.0f, 3.0f, "");
+	AddTimer("", 2.5f, "scare5");
+}	
+
+void scare5(string &in asTimer)
+{
+	StopPlayerLookAt();
+	AddTimer("", 2.5f, "scare6");	
+}	
+
+void scare6(string &in asEntity)
+{	
+	SetMessage("Messages", "unholy", 6);
+	AddTimer("", 6.0f, "hint");
+}
+
+void hint(string &in asTimer)
+{
+	if(GetGlobalVarInt("hint_var") == 1) GiveHint("ForceHint_02", "Hints", "ForceHint_02", 10);
+	else if (GetGlobalVarInt("hint_var") == 2) GiveHint("ForceHint_03", "Hints", "ForceHint_03", 10);
+}
+
+void sound(string &in asTimer)
+{
+	PlaySoundAtEntity("", "ghoul_idle.snt", "ghoul_area", 0.0f, false);	
+}	
+
+void plank_interact(string &in asEntity)
+{
+	SetMessage("Messages", "Startmap_planks", 6);
+}
+
+void on_doorinteract(string &in asEntity)
+{	
+	SetMessage("Messages", "secret_door", 6);
+}
+
+void lightning(string &in asParent, string &in asChild, int alState)
+{
+	SetLightVisible("thunder_light", true);
+	AddTimer("", 0.03f, "lightning2");
+}
+
+void lightning2(string &in asTimer)
+{
+	SetLightVisible("thunder_light", false);
+	AddTimer("", 0.03, "lightning3");	
+}
+
+void lightning3(string &in asTimer)
+{
+	SetLightVisible("thunder_light", true);
+	AddTimer("", 0.03f, "lightning4");	
+}
+
+void lightning4(string &in asTimer)
+{
+	SetLightVisible("thunder_light", false);
+	AddTimer("", 2.0f, "thundersound");
+}
+
+void thundersound(string &in asTimer)
+{
+	PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+	PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);	
+}
+
+void drop_rock(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("rock_falling", true);
+}
+
+void destroyplanks(string &in asItem, string &in asEntity)
+{
+	FadeOut(1);
+	AddTimer("", 2.0f, "smash");
+	SetPlayerActive(false);
+	SetEntityActive("hammerarea", false);
+}
+
+void smash (string &in asTimer)
+{
+	PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+	AddTimer("", 1.0f, "smash2");
+}	
+	
+void smash2 (string &in asTimer)
+{
+	PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+	AddTimer("", 1.0f, "smash3");
+}	
+
+void smash3 (string &in asTimer)
+{
+	PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+	AddTimer("", 1.0f, "complete");
+}	
+
+void complete(string &in asTimer)
+{
+	SetPlayerActive(true);
+	FadeIn(1);
+	SetEntityActive("brokenplanks", true);
+	SetEntityActive("planks", false);
+	SetEntityInteractionDisabled("mansion_1", false); 
+	SetEntityActive("decoyhammer", true);
+}	
+
+void OnEnter()
+{
+	PlayMusic("study_amb_enzo.ogg", true, 0.5, 5, 1, false);	
+	AddDebugMessage("fog_int_hub = " + GetGlobalVarInt("fog_int_hub"), false);
+}
+
+void OnLeave()
+{         
+	for (int x = 0; x <= 100; x++) StopMusic(1.0F, x);
+}

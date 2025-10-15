@@ -1,0 +1,126 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                             ///SCRIPT MADE BY - Sabatu (not actually, script made by Shyrtexx) ///
+///-------------------------------------------------------------------------------------------------------------------///
+
+void OnEnter()
+{
+	SetEntityInteractionDisabled("emotion_stone_1", true);
+}
+
+void OnStart()
+{
+	AddDebugMessage("fog_int_hub = " + GetGlobalVarInt("fog_int_hub"), false);
+	
+	SetEntityInteractionDisabled("emotion_stone_1", true);
+	AddUseItemCallback("", "ancientknife", "knifearea", "disable_barrier", true);
+	AddEntityCollideCallback("Player", "fall_area", "fall_death", false, 1);
+	AddEntityCollideCallback("Player", "hintarea", "hint", false, 1);
+	
+	CheckPoint("fall_checkpoint", "fall_spawn", "falldeath_function", "Death_Hints", "fall_hint");
+	
+	if(ScriptDebugOn())
+	{
+		GiveItem("ancientknife", "Puzzle", "ancientknife", "ceremony_knife.tga", 1);
+	
+	}
+	
+	BlockHint("DarknessDecrease");
+        BlockHint("EntityGrab");
+        BlockHint("EntityLever");
+        BlockHint("EntityPush");
+        BlockHint("EntitySlide");
+        BlockHint("EntitySwingDoor");
+        BlockHint("EntityWheel");
+        BlockHint("PickLantern");
+        BlockHint("PickOil");
+        BlockHint("PickTinderbox");
+        BlockHint("QuestAdded");
+        BlockHint("RecentlyReadText");
+        BlockHint("SanityHit");
+        BlockHint("SanityLow");
+		BlockHint("LanternNoItem");
+}
+
+void falldeath_function(string &in asName, int alCount)
+{
+	if(alCount < 15) PlayMusic("library_enzo.ogg", true, 0.5, 5, 1, false);
+}
+
+void fall_death(string &in asParent, string &in asChild, int alState)
+{
+	GivePlayerDamage(200.0f, "BloodSplat", false, true);	
+}
+
+void knifearea_interact (string &in asEntity)
+{
+	SetMessage("Messages", "knifemessage", 6);
+	AddQuest("artifact", "artifact"); 
+}
+
+void disable_barrier(string &in asItem, string &in asEntity)	
+{
+	RemoveItem(asItem);
+	SetEntityInteractionDisabled("ancientknife", true);
+	SetEntityActive("ancientknife", true);
+	AddTimer("", 3.0f, "remove_barrier");
+	AddTimer("", 7.0f, "activate_knife");
+	AddTimer("", 10.0f, "activate_hint");
+	StartPlayerLookAt("knifearea", 2.0f, 17.0f, "");
+	SetEntityActive("hintarea", true);
+	AddGlobalVarInt("hint_var", 1);
+}
+
+void remove_barrier(string &in asTimer)
+{
+	PlaySoundAtEntity("", "27_orb_implode.snt", "Player", 0.0f, false);
+	StopPlayerLookAt();
+	GiveSanityDamage(10, true);
+	PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+	DestroyParticleSystem("ParticleSystem_1");
+	SetLightVisible("barrierlight", false);
+	AddGlobalVarInt("library_var", 1);
+	AddGlobalVarInt("fog_int_hub", 1);
+
+	for(int x = 1; x<5; x++) SetLampLit("vitunlamppu_"+x, false, false);
+}
+
+void hint(string &in asParent, string &in asChild, int alState)
+{
+	if(GetGlobalVarInt("hint_var") == 1) GiveHint("ForceHint_02", "Hints", "ForceHint_02", 10);
+	else if (GetGlobalVarInt("hint_var") == 2) GiveHint("ForceHint_03", "Hints", "ForceHint_03", 10);
+}	
+
+void activate_knife(string &in asTimer)
+{
+	SetEntityActive("ancientknife", true);
+	SetEntityInteractionDisabled("ancientknife", false);
+}
+
+void knifeinteract(string &in asEntity)
+{
+	CompleteQuest("artifact", "artifact");
+	AddPlayerSanity(20);	
+	PlayMusic("17_puzzle.ogg", false, 1, 5, 1, false);
+	AddTimer("", 3.5f, "crumble");
+}
+
+void crumble(string &in asTimer)
+{
+	PlaySoundAtEntity("", "29_crumble.snt", "Player", 0.0f, false);
+	PlaySoundAtEntity("", "27_break.snt", "Player", 0.0f, false);
+	StartScreenShake(0.01, 7, 1, 1);
+	AddTimer("", 1.5f, "sanity_damage");
+	AddDebugMessage("tower_crash_var = " + GetGlobalVarInt("tower_crash_var"), false);
+	AddGlobalVarInt("tower_crash_var", 1);
+}
+
+void sanity_damage(string &in asTimer)
+{	
+	GiveSanityDamage(15, true);
+}
+
+void OnLeave()
+{
+	for (int x = 0; x <= 100; x++) StopMusic(1.0F, x);
+	SetupLoadScreen("LoadingText", "hub_text_", 3, "tower_menu.jpg");
+}

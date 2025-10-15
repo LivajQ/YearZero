@@ -1,0 +1,198 @@
+////////////////////////////
+void OnStart()
+{
+	SetGlobalVarInt("tower_crash_var", 0); 	
+		
+	MovePlayerHeadPos(0.0f, -1.25f, 0.0f, 1.0f, 0.5f);
+	SetPlayerRunSpeedMul(0.0f);
+	SetPlayerMoveSpeedMul(0.0f);
+	FadePlayerRollTo(-60, 10, 25);
+	SetPlayerCrouchDisabled(true);	
+	
+	FadeImageTrailTo(1, 5);
+	
+	FadeRadialBlurTo(1, 5);
+	
+		BlockHint("DarknessDecrease");
+			BlockHint("EntityGrab");
+			BlockHint("EntityLever");
+			BlockHint("EntityPush");
+			BlockHint("EntitySlide");
+			BlockHint("EntitySwingDoor");
+			BlockHint("EntityWheel");
+			BlockHint("PickLantern");
+			BlockHint("PickOil");
+			BlockHint("PickTinderbox");
+			BlockHint("QuestAdded");
+			BlockHint("RecentlyReadText");
+			BlockHint("SanityHit");
+			BlockHint("SanityLow");
+			BlockHint("LanternNoItem");
+		
+	SetEntityInteractionDisabled("fallen_door", true);
+	SetEntityInteractionDisabled("castle_3", true);
+	SetEntityInteractionDisabled("wood_beam*", true);
+		
+	PreloadSound("general_thunder.snt");	
+	
+	FadeOut(0);
+	
+	AddTimer("", 5.0f, "wakeup_01");
+	
+	for(int x = 1; x<5; x++){
+								
+		AddEntityCollideCallback("Player", "windarea_"+x, "playwind", true, 1);  //actually plays thunder, but whatever
+		
+		}	
+		
+	AddEntityCollideCallback("Player", "player_normalarea", "change_player", true, 1);	
+	
+	SetGlobalVarInt("ghost", RandInt(1, 7));
+	
+	AddTimer("", 0.5f, "lightsout");  //stupid workaround to get lights off	  
+	
+	PlayMusic("castlehall_amb.ogg", true, 1, 5, 1, false);
+		
+	//begin the intro//	 
+}
+
+void change_player(string &in asParent, string &in asChild, int alState) //this will revert the player back to normal aside for movement speed
+{
+	FadeImageTrailTo(0, 1);
+	
+	FadeRadialBlurTo(0, 1);
+	
+	SetPlayerMoveSpeedMul(0.7);
+	
+	SetPlayerRunSpeedMul(0);
+	
+	SetLocalVarInt("book", RandInt(1, 50));
+	
+	GiveHint("", "Hints", "ForceHint_01", 10);
+	
+	if (GetLocalVarInt ("book") == 2) AddPropForce("testbook", -400, 40, 40, "world");
+}	
+
+void playwind(string &in asParent, string &in asChild, int alState) //actually plays the thunder instead of the wind
+{
+	PlaySoundAtEntity("","general_thunder.snt", "Player", 0.0f ,false);
+}
+
+/////////////////////////////////////
+//////////////ENTIRE WAKE UP SEQUENCE
+
+void wakeup_01(string &in asTimer)
+{
+	FadeIn(15);
+	
+	StopPlayerLookAt();
+	
+	AddTimer("", 4.0f, "wakeup_02"); 
+}
+
+void wakeup_02(string &in asTimer)
+{
+	FadeOut(7);
+	
+	AddTimer("", 2.0f, "wakeup_03"); 
+	
+	AddTimer("", 2.0f, "lightson");
+}
+
+void wakeup_03(string &in asTimer)
+{	
+	FadeIn(12);
+	
+	AddTimer("", 5.0f, "wakeup_04"); 
+}
+
+void wakeup_04(string &in asTimer)
+{
+	StartPlayerLookAt("startarea_2", 2.0f, 2.0f, "");
+	
+	FadeOut(15);
+	
+	AddTimer("", 6.0f, "wakeup_05");
+}
+
+void wakeup_05(string &in asTimer)
+{
+	StopPlayerLookAt();
+	
+	FadeIn(7);	
+	
+	AddTimer("", 6.0f, "wakeup_06");
+}
+
+void wakeup_06(string &in asTimer)
+{
+	SetPlayerActive(true);
+	
+	SetPlayerCrouching(false);	
+	
+	FadePlayerRollTo(0.0f, 1.0f, 33.0f);
+	
+	MovePlayerHeadPos(0.0, 0, 0, 1.0f, 0.5f);
+	
+	SetPlayerRunSpeedMul(0.4f);
+	
+	SetPlayerMoveSpeedMul(0.3f);
+	
+	SetPlayerCrouchDisabled(false);	
+}
+
+void lightsout(string &in asTimer)
+{
+	for(int x = 1; x<13; x++) SetLightVisible("flickerlamp_"+x, false); 
+}
+
+void lightson(string &in asTimer)
+{
+	for(int x = 1; x<13; x++) SetLightVisible("flickerlamp_"+x, true); 
+	AddTimer("", 6.0f, "lightsout_2");
+}	
+
+void lightsout_2(string &in asTimer)
+{
+	for(int x = 1; x<13; x++) SetLightVisible("flickerlamp_"+x, false); 
+}
+
+void thunder_01(string &in asTimer)
+{
+	PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+}
+
+void plank_interact(string &in asEntity)
+{	
+	SetMessage("Messages", "Startmap_planks", 6);
+}
+
+void OnEnter()
+{
+	AddDebugMessage("tower_crash_var = " + GetGlobalVarInt("tower_crash_var"), false);
+	
+	if(GetGlobalVarInt("tower_crash_var") == 1){	
+		
+		SetEntityActive("wood_beam_36", false);
+		SetEntityActive("wood_beam_35", false);
+		SetEntityActive("wood_beam_34", false);
+		SetEntityActive("castle_3", false);
+		SetEntityActive("planks_interactarea", false);
+		
+		SetEntityActive("fallen_beam*", true);
+		SetEntityActive("fallen_door", true);
+		SetEntityActive("rock", true);
+		
+    }	
+}
+
+void OnLeave()
+{
+	for (int x = 0; x <= 100; x++) StopMusic(1.0F, x);
+}
+
+void ded(string &in asTimer)
+{
+    GivePlayerDamage(200.0f, "BloodSplat", false, true);  //thank you livajo <3
+														  //ong
+}

@@ -1,0 +1,631 @@
+void OnStart()
+{
+	
+//USEITEM CALLBACKS
+
+AddUseItemCallback("", "2cm_rod", "2cm_area", "insert_2cm", true);	
+
+AddUseItemCallback("", "44cm_rod", "44cm_area", "insert_44cm", true);	
+
+AddUseItemCallback("", "5cm_rod", "5cm_area", "insert_5cm", true);	             // all these are for the machine puzzle
+
+AddUseItemCallback("", "8cm_rod", "8cm_area", "insert_8cm", true);	
+
+AddUseItemCallback("", "10cm_rod", "10cm_area", "insert_10cm", true);	
+
+AddUseItemCallback("", "11cm_rod", "11cm_area", "insert_11cm", true);
+	
+AddUseItemCallback("", "glassjar", "usejar_area", "usejaronfuel", true);	//get the fuel from Underground Section
+	
+AddUseItemCallback("", "cellskey", "cellsdoor", "unlockcellsdoor", true);	
+
+AddUseItemCallback("", "saw", "barricadearea", "breakbeams", true);	
+
+AddUseItemCallback("", "morguekey", "morguedoor", "unlockmorgue", true);	
+
+//COLLIDE CALLBACKS	
+	
+AddEntityCollideCallback("Player", "FlashCollide", "FlashEvent", true, 1); //at the moment this does nothing
+
+AddEntityCollideCallback("Player", "KeyDropArea", "DropKeyEvent", true, 1); //drop the key in the pipe
+
+AddEntityCollideCallback("Player", "machine_area", "machine_examine", true, 1); //examine the machinery room
+
+AddEntityCollideCallback("Player", "ambient_sound_area_1", "play_sound_1", true, 1); //ambient sounds
+
+
+//MISC
+
+PlayMusic("ug_ambience.ogg", true, 0.5, 5, 1, false); //music //the music file isn't found?
+
+SetEntityInteractionDisabled("fake*", true); //the rods at machine room
+
+SetEntityInteractionDisabled("fuel", true);
+
+
+
+//VARIABLE
+
+SetLocalVarInt("machine_leftside", 0);      //machine puzzle variables
+
+SetLocalVarInt("machine_rightside", 0);
+
+SetLocalVarInt("lever_variable", 0);        //rod machine levers
+
+SetLocalVarInt("glassjar_fuelarea", 0); //for checking whether the player has the container or not
+
+
+
+
+}
+
+
+void machine_quest(string &in asEntity)
+
+{
+	
+AddQuest("machinery", "machinery");
+
+}
+
+/////////////////////////////////////////// does nothing
+
+void play_sound_1(string &in asParent, string &in asChild, int alState)
+
+{
+	
+PlaySoundAtEntity("", "13_whomp.snt", "sound_area_1", 0.5f, false);
+
+}
+
+////////////////////////////////////////////// does nothing
+
+//////////////////////////////////////////////////////////////////////////////////////////////    does nothing now, but only misses the machine_area
+//////////////////////////////////////////////////////////////////////////////////////////////
+void machine_examine(string &in asParent, string &in asChild, int alState)
+
+{
+	
+SetPlayerActive(false);
+StartPlayerLookAt("lookarea_1", 1.0f, 1.0f, "");
+AddTimer("", 2.0f, "second_look");
+
+}
+
+void second_look(string &in asTimer)
+
+{
+	
+StopPlayerLookAt();
+StartPlayerLookAt("lookarea_2", 2.0f, 2.0f, "");
+AddTimer("", 3.0f, "third_look");
+	
+}
+
+void third_look(string &in asTimer)
+
+{
+	
+StopPlayerLookAt();
+SetPlayerActive(true);
+AddQuest("machinery", "machinery");
+	
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////    does nothing now, but only misses the machine_area
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+void cellsdoor_locked(string &in asEntity)
+
+{
+	
+	
+   if(GetSwingDoorLocked("cellsdoor")==true){
+	   
+        SetMessage("Messages", "locked", 6); 
+		
+    }	
+	
+}
+
+
+
+
+void unlockmorgue(string &in asItem, string &in asEntity)
+
+{
+
+SetLevelDoorLocked("morguedoor", false);
+
+RemoveItem(asItem);
+
+PlaySoundAtEntity("", "lock_door.snt", "morguedoor", 0.5f, false);
+
+}
+
+
+void breakbeams(string &in asItem, string &in asEntity)
+
+{
+
+FadeOut(1);
+AddTimer("", 1.5f, "breaking");
+
+}
+
+void breaking (string &in asTimer)
+
+{
+
+SetEntityActive("brokenbeam*", true);
+SetEntityActive("barricadearea", false);
+SetEntityActive("removed_beam_*", false);
+FadeIn(1);
+
+} 
+
+
+void unlockcellsdoor(string &in asItem, string &in asEntity)
+
+{
+	
+SetSwingDoorLocked("cellsdoor", false, false);
+
+PlaySoundAtEntity("", "lock_door.snt", "cellsdoor", 0.5f, false);
+
+RemoveItem(asItem);
+	
+}	
+
+
+
+void fuelvalve(string &in asEntity)
+
+{
+	
+if (GetLocalVarInt ("glassjar_fuelarea") == 0){
+  
+   SetMessage("Messages", "UG_nojar", 6);
+
+}
+
+else if (GetLocalVarInt ("glassjar_fuelarea") == 1){
+	
+	SetEntityActive("decoyjar", true);
+	SetEntityInteractionDisabled("decoyjar", true);
+	CreateParticleSystemAtEntity("fuel_stream", "ps_liquid_epoxy", "fuelstreamarea", true);	
+	StartPlayerLookAt("fuel", 5.0f, 5.0f, "");
+	SetPlayerActive(false);
+	AddTimer("", 4.0f, "getfuel");
+	AddTimer("", 4.0f, "stopsound");
+	SetEntityActive("usejar_area", false);
+	PlaySoundAtEntity("stupidshit", "12_epoxy_drip.snt", "soundarea", 1.0f, true);	
+	SetEntityActive("ScriptArea_2", false);
+	SetEntityActive("fuelstreamarea", false);
+}
+
+} 
+  
+
+//GET THE FUEL
+
+void usejaronfuel(string &in asItem, string &in asEntity)
+
+{
+	
+SetEntityActive("decoyjar", true);
+
+AddLocalVarInt("glassjar_fuelarea", 1);
+
+SetEntityInteractionDisabled("decoyjar", true);
+
+RemoveItem(asItem);
+
+}
+
+void getfuel(string &in asTimer)
+
+{
+	
+StopPlayerLookAt();
+SetPlayerActive(true);
+SetEntityInteractionDisabled("fuel", false);
+DestroyParticleSystem("fuel_stream");
+SetEntityActive("fuel", true);
+SetEntityActive("decoyjar", false);
+
+}
+
+void stopsound(string &in asTimer)
+
+{
+
+StopSound("stupidshit", 1.0f);
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////
+///////////////////////MACHINERY PUZZLE SCRIPTS
+
+
+//RODS TO THE SLOTS
+
+void insert_2cm(string &in asItem, string &in asEntity)
+
+{
+
+PlaySoundAtEntity("", "13_rod_in.snt", "2cm_area", 0.0f, true);	
+	
+SetEntityActive("fake_2cm_rod_static", true);
+
+RemoveItem(asItem);	
+
+AddLocalVarInt("machine_rightside", 1);
+
+UnlockRightLever();
+
+}
+
+void insert_10cm(string &in asItem, string &in asEntity)
+
+{
+
+PlaySoundAtEntity("", "13_rod_in.snt", "10cm_area", 0.0f, true);	
+	
+SetEntityActive("fake_10cm_rod_static", true);
+
+RemoveItem(asItem);	
+
+AddLocalVarInt("machine_rightside", 1);
+
+UnlockRightLever();
+
+}
+
+void insert_11cm(string &in asItem, string &in asEntity)
+
+{
+
+PlaySoundAtEntity("", "13_rod_in.snt", "11cm_area", 0.0f, true);	
+	
+SetEntityActive("fake_11cm_rod_static", true);
+
+RemoveItem(asItem);	
+
+AddLocalVarInt("machine_rightside", 1);
+
+UnlockRightLever();
+
+}
+
+
+
+void insert_44cm(string &in asItem, string &in asEntity)
+
+{
+
+PlaySoundAtEntity("", "13_rod_in.snt", "44cm_area", 0.0f, true);	
+	
+SetEntityActive("fake_44cm_rod_static", true);
+
+RemoveItem(asItem);	
+
+AddLocalVarInt("machine_leftside", 1);
+
+UnlockLeftLever();
+	
+}
+
+
+void insert_5cm(string &in asItem, string &in asEntity)
+
+{
+
+PlaySoundAtEntity("", "13_rod_in.snt", "5cm_area", 0.0f, true);	
+	
+SetEntityActive("fake_5cm_rod_static", true);
+
+RemoveItem(asItem);	
+
+AddLocalVarInt("machine_leftside", 1);
+
+UnlockLeftLever();
+
+}
+
+
+void insert_8cm(string &in asItem, string &in asEntity)
+
+{
+
+PlaySoundAtEntity("", "13_rod_in.snt", "8cm_area", 0.0f, true);	
+	
+SetEntityActive("fake_8cm_rod_static", true);
+
+RemoveItem(asItem);	
+
+AddLocalVarInt("machine_leftside", 1);
+
+UnlockLeftLever();
+	
+}
+
+
+
+
+
+
+
+//UNLOCKING THE LEVERS
+
+
+void UnlockLeftLever()
+
+{
+	
+if(GetLocalVarInt("machine_leftside") == 3){
+	
+	SetLeverStuckState("leftside_lever", 0, false);
+	
+    }
+    
+
+}
+
+
+void UnlockRightLever()
+
+{
+	
+if(GetLocalVarInt("machine_rightside") == 3){
+	
+	SetLeverStuckState("rightside_lever", 0, false);
+	
+    }
+    
+
+}
+
+
+//A POOR ATTEMPT FOR THE EIGHT LEVERS. LET'S GO //THANK YOU DRONESPENCER
+
+void lever_func(string &in asEntity, int LeverState)
+
+{
+	if(GetLeverState("control_room_piston_lever_8") == 1
+    && GetLeverState("control_room_piston_lever_7") == -1
+    && GetLeverState("control_room_piston_lever_6") == -1
+    && GetLeverState("control_room_piston_lever_5") == -1
+    && GetLeverState("control_room_piston_lever_4") == -1
+    && GetLeverState("control_room_piston_lever_3") == 1
+    && GetLeverState("control_room_piston_lever_2") == -1
+    && GetLeverState("control_room_piston_lever_1") == -1){
+				
+		
+	
+	SetLeverStuckState("control_room_piston_lever_8", 1, true);
+	SetLeverStuckState("control_room_piston_lever_7", -1, true);
+	SetLeverStuckState("control_room_piston_lever_6", -1, true);
+	SetLeverStuckState("control_room_piston_lever_5", -1, true);
+	SetLeverStuckState("control_room_piston_lever_4", -1, true);
+	SetLeverStuckState("control_room_piston_lever_3", 1, true);
+	SetLeverStuckState("control_room_piston_lever_2", -1, true);
+	SetLeverStuckState("control_room_piston_lever_1", -1, true);
+		
+	PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+
+	}
+	
+	
+	
+}
+
+
+
+
+//ROD LEVER SCRIPTS
+
+
+void rightlever_func(string &in asEntity, int alState)
+
+{
+
+    if(alState == -1){
+	
+	SetLeverStuckState("rightside_lever", -1, true);
+	AddLocalVarInt("lever_variable", 1);
+	UnlockLevers();
+
+   }
+   
+} 
+
+void leftlever_func(string &in asEntity, int alState)
+
+{
+
+    if(alState == -1){
+	
+	SetLeverStuckState("leftside_lever", -1, true);
+	AddLocalVarInt("lever_variable", 1);
+	UnlockLevers();
+
+   }
+
+}
+
+
+void UnlockLevers()
+
+{
+
+    if(GetLocalVarInt("lever_variable") == 2){
+	
+	for(int x = 1; x<9; x++){
+                             
+    SetLeverStuckState("control_room_piston_lever_"+x, 0, true); 
+	
+	}
+  }	
+} 
+
+
+
+
+
+
+
+
+
+
+void leftleverinteract(string &in asEntity)
+
+{
+	
+ if(GetLeverState("leftside_lever") == 1){
+	 
+	 SetMessage("Messages", "UG_leverstuck", 6);
+	 
+    }
+	
+}	
+
+void rightleverinteract(string &in asEntity)
+
+{
+	
+ if(GetLeverState("rightside_lever") == 1){
+	 
+	 SetMessage("Messages", "UG_leverstuck", 6);
+	 
+    }
+	
+}	
+
+
+
+
+
+
+void FlashEvent(string &in asParent, string &in asChild, int alState) //this does nothing at the moment
+{
+	
+StartEffectEmotionFlash("Flash", "Monster", "ui_insanity_touch.snt");
+
+}
+
+void BrokenWall(string &in asEntity) //interact with the barricade
+{
+	
+SetMessage("Messages", "BrokenWallMessage", 6);
+
+AddQuest("barricadewall", "barricadewall");
+
+}
+
+void KeyCallback(string &in asEntity) //pick up the key from the wall
+{
+	
+SetLightVisible("PointLight_24", false);
+
+SetEntityActive("KeyDropArea", true);
+
+}
+
+/////////////////////////////////////
+
+void DropKeyEvent(string &in asParent, string &in asChild, int alState) //pass by the narrow area with pipes
+{
+	
+PlaySoundAtEntity("","25_drop_key", "PipeArea", 0,false);
+
+AddTimer("", 0.5f, "Realize");
+
+SetPlayerActive(false);
+
+}
+
+
+void Realize(string &in asTimer)
+{
+	
+StartPlayerLookAt("PipeArea", 5.0f, 17.0f, "");
+
+AddTimer("", 1.5f, "keydroptimer_01");
+
+}
+
+
+void keydroptimer_01(string &in asTimer)
+{
+	
+SetMessage("Messages", "UG_droppedkey_01", 4);
+
+AddTimer("", 4.5f, "keydroptimer_02");
+
+}
+
+void keydroptimer_02(string &in asTimer)  //end
+{
+	
+SetMessage("Messages", "UG_droppedkey_02", 6);
+
+SetPlayerActive(true);
+
+StopPlayerLookAt();
+
+AddQuest("sewerkeyquest", "sewerkeyquest");	
+
+}
+
+/////////////////////////////////////////////////////
+
+void note_pickup_memento(string &in asEntity) //picking up the note explaining the section
+{
+	
+AddQuest("note_pickup_memento", "note_pickup_memento");
+
+}
+
+
+void archives_doorinteract(string &in asEntity)
+
+{
+
+SetMessage("Messages", "UG_nocomingback", 6);
+	
+}
+
+
+
+
+
+
+
+
+
+void OnEnter()
+{
+	
+PlayMusic("ug_ambience.ogg", true, 0.5, 5, 1, false);
+
+}
+
+void OnLeave()
+{         
+}

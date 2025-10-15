@@ -1,0 +1,305 @@
+void OnStart()
+{
+
+//MUSIC
+
+PlayMusic("04_amb.ogg", true, 1, 5, 1, false);
+
+//MISCELLANEOUS
+
+SetEntityInteractionDisabled("mansion_1", true); 
+SetEntityInteractionDisabled("decoyhammer", true); 
+SetEntityActive("decoyhammer", false);
+SetEntityInteractionDisabled("leverbar", true); 
+SetEntityInteractionDisabled("leverbar_tangled", true); 
+SetEntityActive("hammerarea", false);
+
+SetLocalVarInt("bar_hit", 0);
+//USEITEM CALLBACKS
+
+AddUseItemCallback("", "weakhammer", "hammerarea", "attempt", false);	
+
+AddUseItemCallback("", "ironbar", "bararea", "placebar", true);	
+
+AddUseItemCallback("", "kendrickroom_key", "kendrickdoor", "unlock_kendrickdoor", true);	
+
+
+//COLLIDES
+
+AddEntityCollideCallback("Player", "shelf_close_area", "shelf_event", true, 1);
+
+
+
+
+}
+
+void kendrickdoor_interact(string &in asEntity)
+
+{
+	
+if(GetSwingDoorLocked("kendrickdoor") == true){
+   SetMessage("Messages", "kendrickdoor_locked", 6);
+   AddQuest("kdoorlocked_quest", "kdoorlocked_quest");
+      
+  }	
+}	
+	
+
+void unlock_kendrickdoor(string &in asItem, string &in asEntity)
+
+{
+	
+SetSwingDoorLocked("kendrickdoor", false, true);
+PlaySoundAtEntity("","unlock_door","kendrickdoor", 0,false);
+RemoveItem(asItem);
+	
+}
+
+void interact_shelf(string &in asEntity)
+
+{
+	
+SetMessage("Messages", "calm_down", 6);
+AddTimer("", 5.0f, "collapse");
+
+}
+
+void collapse(string &in asTimer)
+{
+	
+MovePlayerHeadPos(0.0f, -1.25f, 0.0f, 1.0f, 0.5f);
+SetPlayerRunSpeedMul(0.0f);
+SetPlayerMoveSpeedMul(0.0f);
+FadePlayerRollTo(-60, 10, 25);
+FadeOut(3);
+SetPlayerActive(false);
+AddTimer("", 8.0f, "wake");
+AddTimer("", 12.0f, "wakeup");
+PlaySoundAtEntity("", "player_bodyfall.snt", "Player", 0.0f, false);
+
+}
+
+void wake(string &in asTimer)
+{
+	
+FadeIn(0);
+PlaySoundAtEntity("ShelfSound", "react_scare.snt", "Player", 0.0f, false);
+SetPlayerActive(true);
+AddTimer("", 2.0f, "WakeUp");
+
+}
+
+void wakeup(string &in asTimer)
+{
+	
+FadePlayerRollTo(0.0f, 1.0f, 33.0f);
+MovePlayerHeadPos(0.0, 0, 0, 1.0f, 0.5f);
+SetPlayerRunSpeedMul(1.0f);
+SetPlayerMoveSpeedMul(1.0f);
+AddTimer("", 2.0f, "question");
+
+}
+
+
+
+
+
+
+void shelf_event(string &in asParent, string &in asChild, int alState)
+
+{
+	
+SetMoveObjectState("shelf", 0.0f);	
+SetEntityActive("wtf_area", true);
+	
+}	
+
+
+
+void attempt (string &in asItem, string &in asEntity)
+
+{
+	
+PlaySoundAtEntity("", "impact_metal_med.snt", "hammerarea", 0.0f, true);
+AddLocalVarInt("bar_hit", 1);		
+Success();
+
+}
+
+void Success()
+
+{
+	
+
+	
+if(GetLocalVarInt("bar_hit") == 4){	
+	
+       AddPlayerSanity(20);
+	   SetEntityActive("leverbar", false);
+       SetEntityActive("leverbar_tangled", true);	
+	   SetEntityActive("hammerarea", false);
+	   CompleteQuest("newlever", "newlever");
+	   PlaySoundAtEntity("", "pickaxe_hit.snt", "leverbar_tangled", 0.0f, true);
+	   SetMoveObjectState("shelf",1.0f);
+	   SetEntityActive("shelf_close_area", true);
+	   
+    }
+}	
+
+
+void cantpull (string &in asEntity)
+
+{
+	
+SetMessage("Messages", "cantpull_bar", 6);
+
+}
+
+void placebar(string &in asItem, string &in asEntity)
+
+{
+	
+SetEntityActive("leverbar", true);
+RemoveItem(asItem);
+PlaySoundAtEntity("", "puzzle_place_jar", "soundarea", 0.0f, true);	
+SetEntityActive("hammerarea", true);
+SetEntityActive("bararea", false);
+
+}
+	
+	
+
+void breaklever(string &in asEntity)
+
+{
+	
+SetEntityActive("mount", true);
+SetEntityActive("piece", true);            //lever pieces
+SetEntityActive("broken", false);
+SetEntityActive("bararea", true);           //script area to place the bar in
+
+
+PlaySoundAtEntity("", "impact_wood_low.snt", "soundarea", 0.0f, true);       //upon breaking the lever
+AddQuest("newlever", "newlever");
+
+
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void destroyplanks(string &in asItem, string &in asEntity)
+
+{
+	
+FadeOut(1);
+AddTimer("", 2.0f, "smash");
+SetPlayerActive(false);
+SetEntityActive("hammerarea", false);
+RemoveItem(asItem);
+
+}
+
+void smash (string &in asTimer)
+
+{
+
+PlaySoundAtEntity("", "hit_wood.snt", "Player", 1.0f, true);	
+AddTimer("", 1.0f, "smash2");
+
+}	
+	
+void smash2 (string &in asTimer)
+
+{
+
+PlaySoundAtEntity("", "hit_wood.snt", "Player", 1.0f, true);	
+AddTimer("", 1.0f, "smash3");
+
+}	
+
+void smash3 (string &in asTimer)
+
+{
+
+PlaySoundAtEntity("", "hit_wood.snt", "Player", 1.0f, true);	
+AddTimer("", 1.0f, "complete");
+
+}	
+
+void complete(string &in asTimer)
+
+{
+	
+SetPlayerActive(true);
+FadeIn(1);
+SetEntityActive("brokenplanks", true);
+SetEntityActive("planks", false);
+SetEntityInteractionDisabled("mansion_1", false); 
+SetEntityActive("decoyhammer", true);
+AddTimer("", 1.5f, "hammermessage");
+	
+}	
+
+void hammermessage(string &in asTimer)
+
+{
+
+SetMessage("Messages", "hammerbroken", 6);
+
+}
+
+void plank_interact(string &in asEntity)
+
+{
+
+AddQuest("planks", "planks");	
+SetMessage("Messages", "Startmap_planks", 6);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void OnEnter()
+{
+}
+
+void OnLeave()
+{         
+}

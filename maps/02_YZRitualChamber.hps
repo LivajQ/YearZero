@@ -1,0 +1,148 @@
+void OnStart()
+{
+	SetEntityInteractionDisabled("door_blocked", true);
+	
+	SetPropStaticPhysics("wood_beam_*", true);
+	
+	AddUseItemCallback("", "weakhammer", "crossarea_1", "destroycross_1", true);
+	AddUseItemCallback("", "weakhammer", "crossarea_2", "destroycross_2", true);
+	AddUseItemCallback("", "weakhammer", "crossarea_3", "destroycross_3", true);
+	AddUseItemCallback("", "weakhammer", "crossarea_4", "destroycross_4", true);
+	
+	SetEntityPlayerInteractCallback("interactWithMe", "joinEvilForces", true);
+	
+	SetLocalVarInt("cross_variable", 0);  //is this for counting crosses to determine the ending? if so you can safely remove it
+	
+	PlayMusic("ritual_music.ogg", true, 0.5, 5, 5, false);
+	
+	AddTimer("stopMe", 60.0f, "endOfAllThings");
+}
+
+void destroycross_1(string &in asItem, string &in asEntity)
+{
+	SetPropStaticPhysics("wood_beam_1", false);
+	SetPropStaticPhysics("wood_beam_2", false);
+	
+	AddPropForce("wood_beam_1", 1000, 500, 500, "World");
+	AddPropForce("wood_beam_2", 500, 500, 500, "World");
+	
+	AddLocalVarInt("cross_variable", 1);
+	PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+	DestroyParticleSystem("cross_system_2");
+	
+	addBrokenCrossCount();
+}
+
+void destroycross_2(string &in asItem, string &in asEntity)
+{
+	SetPropStaticPhysics("wood_beam_3", false);
+	SetPropStaticPhysics("wood_beam_4", false);
+	
+	AddPropForce("wood_beam_3", 1000, 500, 500, "World");
+	AddPropForce("wood_beam_4", 500, 500, 500, "World");
+	
+	AddLocalVarInt("cross_variable", 1);
+	PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+	DestroyParticleSystem("cross_system_1");
+	
+	addBrokenCrossCount();
+}
+
+void destroycross_4(string &in asItem, string &in asEntity)
+{
+	SetPropStaticPhysics("wood_beam_5", false);
+	SetPropStaticPhysics("wood_beam_6", false);
+	
+	AddPropForce("wood_beam_5", 1000, 500, 500, "World");
+	AddPropForce("wood_beam_6", 500, 500, 500, "World");
+	
+	AddLocalVarInt("cross_variable", 1);
+	PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+	DestroyParticleSystem("cross_system_3");
+	
+	addBrokenCrossCount();
+}
+
+void destroycross_3(string &in asItem, string &in asEntity)
+{
+	SetPropStaticPhysics("wood_beam_8", false);
+	SetPropStaticPhysics("wood_beam_7", false);
+	
+	AddPropForce("wood_beam_8", 1000, 500, 500, "World");
+	AddPropForce("wood_beam_7", 500, 500, 500, "World");
+	
+	AddLocalVarInt("cross_variable", 1);
+	PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+	DestroyParticleSystem("cross_system_4");
+	
+	addBrokenCrossCount();
+}
+
+void tome_interact(string &in asEntity)
+{
+	SetMessage("Messages", "tome_message", 6.0f);
+}
+
+void addBrokenCrossCount()
+{
+	AddLocalVarInt("brokenCrosses", 1);
+	if(GetLocalVarInt("brokenCrosses") >= 4) 
+	{
+		RemoveTimer("stopMe");
+		triggerEnding(0);
+	}
+}
+
+void joinEvilForces(string &in asEntity)
+{
+	RemoveTimer("stopMe");
+	triggerEnding(1);
+}
+
+void endOfAllThings(string &in asTimer)
+{
+	triggerEnding(2);
+}
+
+void triggerEnding(int ending)
+{
+	switch(ending)
+	{
+		case 0:
+			preventEvilEnding();
+			break;
+			
+		case 1:
+			joinEvilEnding();
+			break;
+		
+		case 2:
+			weAllDieEnding();
+			break;
+	}
+}
+
+void preventEvilEnding()
+{
+	AddDebugMessage("I am the Prevent Evil ending", false);
+}
+
+void joinEvilEnding()
+{
+	AddDebugMessage("I am the Join Evil ending", false);
+}
+
+void weAllDieEnding()
+{
+	AddDebugMessage("I am the We All Die ending", false);
+}
+
+void OnEnter()
+{
+	
+}
+
+void OnLeave()
+{         
+	
+}

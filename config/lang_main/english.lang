@@ -1,0 +1,586 @@
+<LANGUAGE>
+	<!--
+	I have taken this file from the original Amnesia config folder and stripped much of the contents.
+	What remains are the unique categories and some examples of entries from each of them.
+	Feel free to remove, add or rename them, as long as they reflect what's required by the game/script.
+	As for the comments, you may remove them as you wish, or keep them. Up to you.
+
+	SYNTAX:
+	[br] 				- apply a line break
+	[new_page] 			- split text into a new page (for notes/diaries)
+	[voice file.ogg] 	- Play a voice file along with a note/diary with "file.ogg" as the sound file.
+	* 					- Start a line with * to apply special font effects (examples in credits).
+	-->
+	
+	
+	
+	
+	
+
+	<RESOURCES>
+		<Directory Path="fonts/eng" />
+		<Directory Path="lang/eng" />
+	</RESOURCES>
+
+	<!-- Inventory -->
+
+	<CATEGORY Name="Inventory">
+	
+	
+	    //UNDERGROUND SECTION
+		
+		<Entry Name="ItemName_2cm_rod">Rod, 2 cm</Entry>
+		<Entry Name="ItemDesc_2cm_rod">These rods are used in a machinery system, with each ones having different widths.</Entry>
+		
+		<Entry Name="ItemName_44cm_rod">Rod, 4.4 cm</Entry>
+		<Entry Name="ItemDesc_44cm_rod">These rods are used in a machinery system, with each ones having different widths.</Entry>
+		
+		<Entry Name="ItemName_5cm_rod">Rod, 5 cm</Entry>
+		<Entry Name="ItemDesc_5cm_rod">These rods are used in a machinery system, with each ones having different widths.</Entry>
+		
+		<Entry Name="ItemName_8cm_rod">Rod, 8 cm</Entry>
+		<Entry Name="ItemDesc_8cm_rod">These rods are used in a machinery system, with each ones having different widths.</Entry>
+		
+		<Entry Name="ItemName_10cm_rod">Rod, 10 cm</Entry>
+		<Entry Name="ItemDesc_10cm_rod">These rods are used in a machinery system, with each ones having different widths.</Entry>
+		
+		<Entry Name="ItemName_11cm_rod">Rod, 11 cm</Entry>
+		<Entry Name="ItemDesc_11cm_rod">These rods are used in a machinery system, with each ones having different widths.</Entry>
+		
+		<Entry Name="ItemName_44cm_rod">Rod, 11 cm</Entry>
+		<Entry Name="ItemDesc_44cm_rod">These rods are used in a machinery system, with each ones having different widths.</Entry>
+		
+		<Entry Name="ItemName_cellskey">Cells Key</Entry>
+		<Entry Name="ItemDesc_cellskey">The key for unlocking the Cells part of the Underground Section.</Entry>
+		
+		<Entry Name="ItemName_demonskull">Demon Skull</Entry>
+		<Entry Name="ItemDesc_demonskull">One of the four cursed possessions - this skull is believed to have belonged to a demon, straight from the depths of Hell.</Entry>
+	
+		
+		//SEWERS / UNDERGROUND SECTION
+		
+		<Entry Name="ItemName_fuel">Glass Jar of Fuel</Entry>
+		<Entry Name="ItemDesc_fuel">Glass jar filled with fuel. Could be used for a machinery, or something.</Entry>
+		
+		<Entry Name="ItemName_oil">Glass Jar of Oil</Entry>
+		<Entry Name="ItemDesc_oil">Glass jar filled with oil. Very dark. </Entry>
+		
+		//MORGUE
+		
+		<Entry Name="ItemName_skull">Skull</Entry>
+		<Entry Name="ItemName_skull">One of the four ornaments - this skull belonged to who was believed to be a demon in a human form.</Entry>
+		
+		<Entry Name="ItemName_saw">Bone Saw</Entry>
+		<Entry Name="ItemDesc_saw">A small saw, used to cut bones and other small materials.</Entry>
+		
+		<Entry Name="ItemName_glassjar">Glass Jar</Entry>
+		<Entry Name="ItemDesc_glassjar">An empty glass container.</Entry>
+		
+		<Entry Name="ItemName_morguekey">Morgue Key</Entry>
+		<Entry Name="ItemDesc_morguekey">An old, rusty key leading to the Morgue. </Entry>
+		
+		<Entry Name="ItemName_morgue_masterkey">Morgue Master Key</Entry>
+		<Entry Name="ItemDesc_morgue_masterkey">This key presumably opens every door in the Morgue.</Entry>
+		
+		
+		
+		//LIBRARY
+		
+		<Entry Name="ItemName_ancientknife">Ancient Knife</Entry>
+		<Entry Name="ItemDesc_ancientknife">One of the four ornaments - an old knife covered in incredibly valuable jewelery. Plays a crucial role with opening the portal.</Entry>
+		
+		<Entry Name="ItemName_kendrickroom_key">Key to Kendrick's Room</Entry>
+		<Entry Name="ItemDesc_kendrickroom_key">This key will open the door leading to the room of Kendrick.</Entry>
+		
+		//TBD
+		
+		
+		//LIVING QUARTERS
+		
+		<Entry Name="ItemName_oldarchives_key">Old Archives Key</Entry>
+		<Entry Name="ItemDesc_oldarchives_key">The tag reads "Old Archives". This is exactly what I needed.</Entry>
+		
+		<Entry Name="ItemName_weakhammer">Stone Hammer</Entry>
+		<Entry Name="ItemDesc_weakhammer">A sturdy looking stone hammer.</Entry>
+		
+		<Entry Name="ItemName_ironbar">Rusty Iron Bar</Entry>
+		<Entry Name="ItemDesc_ironbar">A rusty iron bar, covered in blood.</Entry>
+		
+		<Entry Name="ItemName_archiveskey">Study Key</Entry>
+		<Entry Name="ItemDesc_archiveskey">The tag reads "Study".</Entry>
+		
+		
+	
+	</CATEGORY>
+
+	<!-- Journal -->
+
+	<CATEGORY Name="Journal">
+
+		<!-- Notes -->
+		
+		//Castle Hallway
+		
+		
+		
+		
+		
+		//Main hub 
+		
+		
+		
+		////////////////////UNUSED FIRST NOTES///////////////
+		////////////////////UNUSED FIRST NOTES///////////////
+		////////////////////UNUSED FIRST NOTES///////////////
+		
+	<Entry Name="Note_Entrance_boarded_Name">Notice</Entry>
+    <Entry Name="Note_Entrance_boarded_Text">As of today, the entrance is to be blocked to prevent any usage. No one will enter or leave. It's too risky at this stage of the operation.[br][br]Only authorized members may leave the property according to my directives, by using the dimensional portal. Any unauthorized usage will be subject for immediate excommunication.</Entry>
+	
+		
+		<Entry Name="Note_projectyz_Name">Project Year Zero</Entry>
+		<Entry Name="Note_projectyz_Text">The project Year Zero is an opportunity like no other. Lots and lots of time has been spent for preparations, planning and studying. The grande finale is ahead, and I will be giving everything I have on this Earth to succeed.[br][br]Years back, I stumbled upon a tome which on the first glance seemed like a normal tome, though slightly larger in size when compared to others. As I explored it further, it revealed a dozen of secrets for me. The tome had a lot of different instructions, for example how to turn anything into gold and how to gain all the luck and fortune on the planet. I managed to try all these things, with success - but the biggest prize still lies ahead.[br][br]The last chapter of the tome is entirely focused on opening a portal to an alternate universe. This universe is a paradise for all those people who enter the portal, and these people will be provided everything they could ever imagine. Prosperous existence will not be forbidden from anyone, it is a true dreamland.[br][br]To open the portal, four artifacts and items will be required. At first, the artifacts seemed normal, but upon further investigation revealed a connection for all the items - they are all somehow linked to Satanism. A while ago I had no idea about Satanism, but as it was mandatory for me to study it, I did so and learnt about it. It eventually turned me a Satanist, hence me abandoning Christianity.[br][br]After the items have been gathered, twenty souls must be sacrificed for Satan. The amount seemed crazy on the first glance, but it is a small price to pay from such luxury this project will give us. As of now, I do not know how I could get the souls I need, so further investigations are required.[br][br]If everything goes right, and the portal opens, nothing can stop me.</Entry>
+
+        <Entry Name="Note_henry_diary1lol_Name">Henry's Diary #1 - Revelations</Entry>
+		<Entry Name="Note_henry_diary1lol_Text">Success![br][br]After all the wasted efforts, failures and misfortune, I managed to grab all the things I need for my project. To say that receiving all of them was a walk in the park would be misleading, as I almost lost my life in the process. Now I can focus on the future, and get this thing going.[br][br]The project Year Zero has now officially started. I have everything I need, aside from the most important thing - people to help me reach my goal. Convincing enough people to join me in this adventure is a lot easier said than done, since the word simply can not spread around the castle, at all. That would put me and two of my most loyal servants, Howard and Collin in a great danger.[br][br]We recently discussed the lack of people, and we came to a conclusion that simply trying to convince others is way too risky for our own sake. However, another method exists - since we are all trained in black magic, witchcraft and other unnatural forces, we could trying brainwashing the people. I am the perfect man for that duty, as I entirely lack any moral ethics and I could not care a bit about what I do.[br][br]Together we invited a few of my friends to come for a visit. Tomorrow we will see how the brainwashing process starts, and if we are to get any success regarding that. I really wish our attempts would be rewarding. It is mandatory at this point.</Entry>
+		
+		////////////////////UNUSED FIRST NOTES///////////////
+		////////////////////UNUSED FIRST NOTES///////////////
+		////////////////////UNUSED FIRST NOTES///////////////
+
+
+        ////////////////////DIARY TEST///////////////
+		////////////////////DIARY TEST///////////////
+		////////////////////DIARY TEST///////////////
+
+       <Entry Name="Diary_henry_diary_Name1">Henry's Diary #1 - Revelations</Entry>
+		<Entry Name="Diary_henry_diary_Text1">[voice henry_diary1_01.ogg][br]The project has now officially started. All the artifacts have been acquired, and most of the preparations are complete. However, one critical aspect remains uncertain - where will we get the required souls? I know how to obtain them - the knife is used for that - but the greatest challenge lies in acquiring people for the sacrifice. The castle we occupy is deep within a forest, so bringing people here will not be easy.[br][voice henry_diary1_02.ogg][br]I spoke with my friends and servants, Howard and Collin, and their ideas were as uncertain as mine. After some discussion, we devised a plan to acquire the first souls. Collin has two friends who live relatively nearby, and they seem like ideal candidates. Understandably, this decision was not easy for Collin - they are his friends, after all. I had to remind him of our purpose here and why this is necessary. It took him some time to process, but eventually, he agreed to the idea.[br][voice henry_diary1_03.ogg][br]Collin has invited his friends to dinner tomorrow, and to our satisfaction, they accepted the invitation. Tomorrow will be the day we claim the first souls, taken from completely unaware and innocent people. Nothing can go wrong with this - and it is only the beginning.</Entry>
+		
+		<Entry Name="Diary_henry_diary_Name2">Henry's Diary #2 - First Souls Gathered</Entry>
+		<Entry Name="Diary_henry_diary_Text2">[voice henry_diary2_01][br]Upon our friends' arrival, we spent some time conversing in our living quarters. As the evening progressed, we moved to the Library to enjoy some of the finest wines this world has to offer. We had such a wonderful time with them that we almost forgot the real reason for their invitation - but it was time to proceed.[br][voice henry_diary2_02][br]I instructed Kendrick to bring the specially marked bottle containing the drugged drink. We offered it to our guests, and they unsuspectingly accepted. Moments later, both collapsed, unconscious. We dragged them to a room near the older section of the library and carried out the deed, fatally stabbing them. The ancient knife I wielded lit two of its twenty gems. Eighteen more to go - slowly but surely. After breaking through the floor in one of the rooms in the Library, we buried the bodies within and sealed the entrance with boards. We could not risk being caught by burying them outside.</Entry>
+		
+		<Entry Name="Diary_henry_diary_Name3">Henry's Diary #3 - Problems</Entry>
+		<Entry Name="Diary_henry_diary_Text3">[voice henry_diary3_01][br]Things had been moving smoothly, at least up until this point. Seven souls have now been successfully acquired, but we have run into a problem - none of us know where to find more people to kill. Collin suggested going to the nearby town to look for potential victims, but how would that even be practical? How could we convince strangers who do not know us to come here? There has to be another way.. I asked Kendrick if he had any ideas, but he just shook his head and admitted he had no clue what to do. Collin’s ideas were no better than ours, and we have hit a complete dead end. Perhaps we did not think this through, or maybe we moved too quickly - I do not know. But we need to figure something out. Fortunately, we are not in a rush, so we have plenty of time to consider our next move.[br][voice henry_diary3_02][br]And then it hit me - I came up with the perfect plan, albeit a very risky one. We could open the castle to the public, offering guided tours and sharing its history with the guests. This would have to be executed with the utmost care - one small misstep or anything that might raise suspicion could spell the end for us. I discussed the idea with Kendrick and Collin. While Kendrick was initially more critical of the plan, he eventually agreed. Tomorrow, we will head into town and post notices announcing that the castle is now open to visitors. When the final group of guests arrives at the end of the day, may they pray to their God for the last time in their lives.</Entry>
+
+        
+        ////////////////////DIARY TEST///////////////
+		////////////////////DIARY TEST///////////////
+		////////////////////DIARY TEST///////////////
+		 
+		 
+	  	<Entry Name="Note_henry_diary1_Name">Henry's Diary #1 - Revelations</Entry>
+		<Entry Name="Note_henry_diary1_Text">[voice henry_diary1_01.ogg][br]The project has now officially started. All the artifacts have been acquired, and most of the preparations are complete. However, one critical aspect remains uncertain - where will we get the required souls? I know how to obtain them - the knife is used for that - but the greatest challenge lies in acquiring people for the sacrifice. The castle we occupy is deep within a forest, so bringing people here will not be easy.[br][voice henry_diary1_02.ogg][br]I spoke with my friends and servants, Howard and Collin, and their ideas were as uncertain as mine. After some discussion, we devised a plan to acquire the first souls. Collin has two friends who live relatively nearby, and they seem like ideal candidates. Understandably, this decision was not easy for Collin - they are his friends, after all. I had to remind him of our purpose here and why this is necessary. It took him some time to process, but eventually, he agreed to the idea.[br][voice henry_diary1_03.ogg][br]Collin has invited his friends to dinner tomorrow, and to our satisfaction, they accepted the invitation. Tomorrow will be the day we claim the first souls, taken from completely unaware and innocent people. Nothing can go wrong with this - and it is only the beginning.</Entry>
+ 
+        <Entry Name="Note_henry_diary2_Name">Henry's Diary #2 - First Souls Gathered</Entry>
+		<Entry Name="Note_henry_diary2_Text">Upon our friends' arrival, we spent some time conversing in our living quarters. As the evening progressed, we moved to the Library to enjoy some of the finest wines this world has to offer. We had such a wonderful time with them that we almost forgot the real reason for their invitation - but it was time to proceed.[br][br]I instructed Kendrick to bring the specially marked bottle containing the drugged drink. We offered it to our guests, and they unsuspectingly accepted. Moments later, both collapsed, unconscious. We dragged them to a room near the older section of the library and carried out the deed, fatally stabbing them. The ancient knife I wielded lit two of its twenty gems. Eighteen more to go - slowly but surely. After breaking through the floor in one of the rooms in the Library, we buried the bodies within and sealed the entrance with boards. We could not risk being caught by burying them outside.</Entry>
+		
+		<Entry Name="Note_henry_diary3_Name">Henry's Diary #3 - Problems</Entry>
+		<Entry Name="Note_henry_diary3_Text">[br][br][br]Things had been moving smoothly, at least up until this point. Seven souls have now been successfully acquired, but we have run into a problem - none of us know where to find more people to kill. Collin suggested going to the nearby town to look for potential victims, but how would that even be practical? How could we convince strangers who do not know us to come here? There has to be another way.. I asked Kendrick if he had any ideas, but he just shook his head and admitted he had no clue what to do. Collin’s ideas were no better than ours, and we have hit a complete dead end. Perhaps we did not think this through, or maybe we moved too quickly - I do not know. But we need to figure something out. Fortunately, we are not in a rush, so we have plenty of time to consider our next move. [br][br][br][br]And then it hit me - I came up with the perfect plan, albeit a very risky one. We could open the castle to the public, offering guided tours and sharing its history with the guests. This would have to be executed with the utmost care - one small misstep or anything that might raise suspicion could spell the end for us. I discussed the idea with Kendrick and Collin. While Kendrick was initially more critical of the plan, he eventually agreed. Tomorrow, we will head into town and post notices announcing that the castle is now open to visitors. When the final group of guests arrives at the end of the day, may they pray to their God for the last time in their lives.</Entry>
+		
+		<Entry Name="Note_henry_diary4_Name">Henry's Diary #4 - Great Progress</Entry>
+		<Entry Name="Note_henry_diary4_Text">[br][br]Turns out that the castle opening was a master plan.[br][br]Although we knew the risks involved with making people go missing, we had to take the chance and act quickly - this is, after all, the fastest way to gather the right amount of souls. On the first day, only ten people arrived at the castle to look around. For the first six of them, we actually held a guided tour to appear innocent. In the evening, when the last group of four showed up, we split them - one person for each of us to handle. Kendrick took one of them to the library, I brought one to the living area, Collin led one to the older section of the archives, and finally, Howard took the last one to the tower. And just like that, an hour later, four more souls had been successfully acquired.[br][br][br][br]We continued this for a couple of days, and before long, we had collected a total of seventeen souls. Rumors about missing people had begun to spread in the nearby town, but none of them were directly tied to what we had been doing. All we need now is one more group of people to arrive, and we will have reached the required amount. Then, the portal preparations can begin.</Entry>
+		
+		<Entry Name="Note_henry_diary5_Name">Henry's Diary #5 - All Souls Gathered</Entry>
+		<Entry Name="Note_henry_diary5_Text">[br][br][br][br]All the souls have now been successfully acquired. On our last day of having the castle open for visitors, we only managed to get two guests in total. However, due to certain... issues before opening the castle for the day, that was enough.[br][br]Kendrick had been acting strangely lately, criticizing our project and our plans at every turn. I had a feeling he might betray us soon, and that is exactly what he attempted to do. I caught him trying to destroy one of our Cursed Possessions, and he began a frantic escape. A spark of pure hatred ignited within me - no one betrays me or Project Year Zero. One more soul, easily acquired from this fool.[br][br][br]As he ran from me, he managed to lock me in the older archives and throw away the key. Fortunately, Collin saw him fleeing, injured, and found the key Kendrick had discarded. If Collin had not recovered it, he could have retrieved the spare key from the hidden compartment in the living quarters. Collin let me out, and I followed the trail of blood leading to Kendrick’s room - where he met his end.</Entry>
+		
+		<Entry Name="Note_henry_diary6_Name">Henry's Diary #6 - Preparations</Entry>
+		<Entry Name="Note_henry_diary6_Text">It was time to get going. Reaching the correct soul amount meant that all the initial requirements had now been met, and we could start the portal opening process. We blocked the main entrance of the castle and used the Ancient Knife to open another barrier in the old archives. We know there is a complex mechanism in the underground section that locks the door to the ritual chamber, but we have yet to discover how it works - though I assume we can figure it out.[br][br]I took the Tome of the Other World to call the Unholy Forces, to let them know that we had met all their requirements for the portal. One of the entities visited us, emptied the Ancient Knife of its souls, and gave us their approval. We then went to the portal room and asked the Forces to light the first pillar in the room. One red light began shining in one of the pillars right away - we are on the right track. Two more pillars to light up, and the portal opens - then, luxury awaits us.</Entry>
+		
+		<Entry Name="Note_henry_diary7_Name">Henry's Diary #7 - Unforgiving Forces </Entry>
+		<Entry Name="Note_henry_diary7_Text">Things took a horrifying turn for the worse. As we were on our way to gather the Demon Skull to bring it down to the portal area, Collin dropped it, and the top of it cracked. He looked at me in pure terror, and not long after, the ground started shaking and one of the entities arrived. Collin attempted to run away and hide... but to no avail. The entity caught him in no time and brutally put an end to his Earthly existence. I could not bear to look. I still hear his horrifying screams deep within my mind. As the entity was done with its act of violence, it came to me - showing no sign of aggression. Instead, it looked like it was expecting something, and that was when I realized - it wanted to see the Black Diamond. I handed it the diamond, got its approval, and the entity left me alone. I went to look at Collin - or rather, what was left of him - only to find a puddle of blood with no remains. These things are no joke - they are unforgiving. We are alone in this with Howard now, and maximum care needs to be taken when advancing from here. Now, I need to bring the diamond in the portal room, in order to light the penultimate pillar.</Entry>
+		
+		<Entry Name="Note_henry_diary7_Name">Henry's Diary #8 - </Entry>
+		<Entry Name="Note_henry_diary7_Text">What began looking so simple and straightforward, has now turned into complete torment and suffering. With only one pillar to light before opening the portal to the paradise, we have run into a severe problem. As we were attempting to place the Demon Skull on the pedestal with Howard to light the pillar, the forces rejected it. We figured it must be due to the skull being cracked, and yet again, we were at a dead end. What are we even supposed to do now? Attempting to fix the skull is incredibly risky, as we could end up making the situation worse and further angering the forces. After a brief discussion with Howard, we agreed to try fixing it. After all, what do we have to lose - I would rather die trying than give up at this point. We decided to get some bone material from the guests we had already buried - since they passed away using the Ancient Knife, we assumed the forces could approve this method of fixing the skull. Carefully, we started adding thin bone pieces to the broken area, one by one - until it looked at least somewhat acceptable. We ventured to the portal area again, put the skull on the pedestal - and the forces, to our liking, accepted it. The final pillar lit up.</Entry>
+
+		 
+		
+		
+		
+
+		
+		
+		
+		
+	    <Entry Name="Note_ancientknife_note_Name">The Ancient Knife</Entry>
+		<Entry Name="Note_ancientknife_note_Text">[br][br][br]The Ancient Knife is one of the four artifacts required to open the portal to the alternate universe. The object itself is razor sharp and covered in incredibly rare gemstones. These gemstones serve an important purpose in opening the portal, as each of the twenty gems is capable of holding the soul of an individual. To obtain a person’s soul, the victim must be killed with the knife. After their death, the knife is then stabbed straight into the heart of the individual and left there to charge. After some time in the heart, the soul is successfully captured, and one of the gemstones will light up. The knife is fully charged after twenty such procedures.[br][br][br][br][br]The origins of the knife are relatively unknown. Some speculate it was brought into the world by Nightscalpers - a kind of demonic creature believed to enter the world straight from the depths of hell to spread satanism among people. Others claim the knife is simply a regular, fake object with nothing special about it - a hoax, if you will.[br][br]Aside from soul gathering, the knife serves another purpose in our project. When combined with the natural forces of the Earth, the knife can be used to form electrical barriers to prevent people from entering a location. However, these forces are limited, and as such, only two of these barriers can be enabled at the same time. One of these barriers is kept in the library for extreme privacy reasons - no one shall enter the forbidden room in the library, or the Satanic entities will be released into the castle. These entities are believed to follow whoever releases them, with consequences that remain unknown.</Entry>
+        
+		<Entry Name="Note_blackdiamond_note_Name">The Black Diamond</Entry>
+		<Entry Name="Note_blackdiamond_note_Text">[br]The Black Diamond is one of the four incredibly valuable artifacts for the portal opening. The origins of the jewel are unknown, but some claim it is brought to our world straight from the future. What makes the Black Diamond so rare is both its impressive size for a jewel, and the fact that black colored diamonds are very uncommon. The artifact is said to be cursed by unholy forces, to constantly haunt the one carrying it.[br][br]For our project, the diamond is used as a gift for the unearthly forces. Upon getting access to the gem, it is gifted straight for Satan, for him to give us his approval. This is one of the four steps required to open the portal to immortal happiness.</Entry>
+        
+		<Entry Name="Note_kendrickdiary_Name">Kendrick's Diary 2 - Defeated</Entry>
+		<Entry Name="Note_kendrickdiary_Text">This might just be the last ever text I write in my life. I screwed up big time.[br][br]I was so close. I was so damn close to ending this madness. Henry has lost his mind with the Project Year Zero. He does not know the reality anymore, and he can not tell the present from the past. With seventeen souls acquired as I write this, I am bound to become the eighteenth.[br][br]I realised that what we are doing, is not right, for obvious reasons. I figured out I was manipulated to believe in everything that Henry said. There is no paradise, there is no immortality, there is no alternate universe. No matter how much he tries to convince me, or other    servants, it just simply is not true. No one should believe Henry, no one should trust him. He has lost his mind.[br][br][br][br]I got caught trying to crack one of our cursed possessions, the Demon Skull. Without the Skull, they can not progress with their mindless operation. Just as I was trying to break it, Henry caught me. I had no time for excuses. I managed to find my way back here, locking Henry in the Old Archives in the progress. I am very weak and seriously injured. I need to go.</Entry>
+		
+		
+		//Library
+		
+		<Entry Name="Note_dogpoem_Name">A Dog And His Bone</Entry> //FOR TRANSLATORS! Leave this poem as is, as the meaning could change due to term differentials. This plays an important role in one of the puzzles.
+		<Entry Name="Note_dogpoem_Text">A dog is a dog whatever its color[br]A dog is a lion when at home.[br]A dog is wiser than a woman[br]and does not bark at its master alone.[br][br]A dog will not snarl at you[br]if you reward it with a bone,[br]but a dog with a bone knows no friend,[br]and will always utter a repetitive groan. [br][br] Joseph T. Renaldi</Entry>
+		
+		<Entry Name="Note_betrayer_Name">Death of Betrayer</Entry>
+		<Entry Name="Note_betrayer_Text">No one stands in my way, or the way of our operation, and unfortunately Kendrick was not aware of this. Today, he felt it on his skin. Trying to sabotage such a priceless project as Year Zero, will come with a serious consequences.[br][br]One more soul gathered for us, completely free, from someone who was out of his mind. May the unearthy forces torment you eternally.</Entry>
+		
+		//Archives
+		
+		<Entry Name="Note_archives_Name">The State of The Archives</Entry>
+		<Entry Name="Note_archives_Text">The condition of the Archives is completely unacceptable.[br][br]Last night, during my studies at the B-Wing, the roof of the empty room collapsed, making working in this location unsafe. I requested our crew to move the most important stuff to the Old Archives section.[br][br]Even though the Old Archives is older, it is in a remarkably better condition. These Archives has water damage all over the place, everything is collapsing, and it is all messy inside. I do not understand why this area is used in the first place. My crew eventually agreed to moving the stuff away from here, and so we did.[br][br]I also noticed the vulnerability of a room in the A-Wing, and I boarded that one up. This area is unsafe to work in. [br][br]- Kendrick R</Entry>
+		
+		<Entry Name="Note_kendrick_note_secret_Name">Kendrick's Diary 1 - Ambition</Entry>
+		<Entry Name="Note_kendrick_note_secret_Text">I am slowly but surely starting to second guess myself and my role for the project Year Zero. With the project being around half complete as I am writing this, I have come to realise that this can not be real. The portal, the universe, it just makes.. no sense. I do not believe the Tome of The Other World. Even when Henry tried to convince me its spells worked when he found the Tome, I was very suspicious about it. He lost his temper with me and told me to give him the appropriate time and that I need to stop questioning the project.[br][br]Too many innocent people have died already. I can not be this selfish, and keep on going with such a burden on my shoulders. I need to stop this, for once, and for all. Tomorrow, this will end.</Entry>
+		
+		<Entry Name="Note_cross_note_Name">The Mark of Defiance</Entry>
+		<Entry Name="Note_cross_note_Text">Forbidden symbol, cast in scorn, [br]Its arms outstretched, a curse is borne. [br]Two paths that meet, their shape betrayed, [br]A mark that shadows would have stayed. [br]Embrace the relic, though shunned it be, [br]And secrets bound shall set you free. [br]</Entry>
+		
+		//Tower
+		
+		<Entry Name="Note_towernote_Name">Old Tower</Entry>
+		<Entry Name="Note_towernote_Text">The old tower which connects the Castle Hall to the New Tower is in a remarkably terrible condition. The alternate entrance from the Castle Hall had to be boarded up to avoid further damage to the areas below. The whole upper level area is a risky place to be in, and the chances for a further collapsing are high. It is not recommended to stay in area. dont go idk broekn</Entry>
+		
+		
+		//Sewer
+		
+
+		<Entry Name="Note_Sewer_Machine_Name">Sewer machinery</Entry>
+		<Entry Name="Note_Sewer_Machine_Text">This machinery room was designed to operate the flood prevention system for the heavy doors. Occasionally, high-pressure water from the northern side of the sewer forces its way through, causing overflow toward the eastern side. While this overflow is not a problem on its own, it can sometimes flood into the underground cell sections. [br][br]It is not recommended to enter the northern side of the sewer, as nothing essential for the machinery or our project lies there. If you must enter that side, beware of potential flooding.</Entry>
+
+        <Entry Name="Note_Sewer_MachineOperating_Name">Operating the machine</Entry>
+		<Entry Name="Note_Sewer_MachineOperating_Text">To get the machine working, ensure the following: [br][br]1) The fuel tank is filled. While there is no way to check the exact amount, a lack of fuel will be obvious. Always make sure to keep some extra fuel in the room. [br][br]2) The machinery requires oil. However, filling the oil tank is not necessary every time, as it lasts for quite a while. If you have added fuel and the machinery still does not work, consider adding a small amount of oil. [br][br]3) The wheel is functional. At times, the wheel used to open the door may become stuck or spin freely without effect. In such cases, it is better to restart the entire machine. The cause of this issue remains unknown.</Entry>
+
+        //Underground Section
+		
+		<Entry Name="Note_UGSectionNote_Name">The Underground Section</Entry>
+		<Entry Name="Note_UGSectionNote_Text">The Underground Section is the area where the majority of our work gets done. The available room means that anything we want to do, is possible here - even the more secretive stuff we have on our hands.[br][br]However, this place has its risks. Few weeks ago, the corridor leading to the second part of the area collapsed, trapping a few of our cult members. As far as we know, there is no alternative way to get out from the area - may the unholy forces free their innocent souls and let them roam free in the perfect world when the time is right. The area is massive, and navigating through the corridors can be tricky, especially during nights when the lanterns are turned off.  </Entry>
+		
+		<Entry Name="Note_machine_Name">Underground Section machine</Entry>
+		<Entry Name="Note_machine_Text">The complex nature of the Underground Section machine is there for a reason - as this is the only barrier between the underground ritual area and the underground section itself. The machine requires eight different rods to start, and afterwards, a correct combination of the levers in the left side is mandatory. Each of our members have their own copies of the correct lever order. This way of keeping our areas private might seem a bit extreme, but we can not afford a single risk for our project's sake.</Entry>
+		
+		//Old Archives
+		
+		<Entry Name="Note_secondbarrier_note_Name">Second Barrier</Entry>
+		<Entry Name="Note_secondbarrier_note_Text">The second barrier, much like the first one, was created by using the Ancient Knife. The  base idea for how they both work is pretty much the same, but the tehnique to disable them is entirely different. Unlike the first barrier which only required the knife, the second uses hellish powers via flames. After inserting the knife, four special candles light up and have to be extinguished.[br][br]Care should be taken when taking out the flames, as this has proven to occasionally anger the forces working with the candles.</Entry>
+		
+		
+
+
+		<!-- Mementos -->
+
+		<Entry Name="Quest_sewerkeyquest_Text">The key I just dropped most likely ended up somewhere in the Sewers. May luck be on my side, if I want to find it again..</Entry>
+		<Entry Name="Quest_barricadewall_Text">There is a broken wall which is strongly barricaded with wooden beams. Perhaps I could find something to break the beams with?</Entry>
+        <Entry Name="Quest_note_pickup_memento_Text">According to the note, the Underground Section area is large and dark. Exploring the area carefully, hording up supplies and attempting to memorize the areas could do me wonders since I could be spending a lot of time here.</Entry>
+		<Entry Name="Quest_unlock_archives_Text">Find a key to unlock the door leading to Old Archives.</Entry>
+		<Entry Name="Quest_electric_barrier_Text">Some sort of a barrier is blocking a way to one of the rooms in Library.</Entry>
+		<Entry Name="Quest_planks_Text">There are some planks blocking a door in Archives. Perhaps I could remove them somehow?</Entry>
+		<Entry Name="Quest_newlever_Text">The lever I found located in Living Quarters broke when I tried to pull it. Maybe there is another lever, or some kind of a replacement for it somewhere?</Entry>
+		<Entry Name="Quest_artifact_Text">An artifact with mysterious power is located at the top of the Tower.</Entry>
+		<Entry Name="Quest_kdoorlocked_quest_Text">The door leading to Kendrick's room is locked.</Entry>
+		<Entry Name="Quest_archivesquest_Text">The door leading to Study is locked.</Entry>
+		<Entry Name="Quest_mechanical_Text">The top level door in Library is locked and there is no keyhole. There has to be an alternate way to unlock the door.</Entry>
+		<Entry Name="Quest_machinery_Text">The machine note mentioned eight different rods, and a combination for the levers. Find everything you need to get the machine working.</Entry>
+		<Entry Name="Quest_secretdoor_Text">There is a secret way to a room in the Study. Figure out a way to open it.</Entry>
+		<Entry Name="Quest_crosspuzzle_Text">A poem is hinting a "shunned object" where "two paths meet" to reveal a secret.</Entry>
+		<Entry Name="Quest_ritualdoor_quest_Text">A heavy door is blocking one of the corridors.</Entry>
+		
+		<!-- Diaries -->
+
+		<Entry Name="Diary_Test_Name1">Test Entry: Overture</Entry>
+		<Entry Name="Diary_Test_Name2">Test Entry: Requiem</Entry>
+		<Entry Name="Diary_Test_Text1">[voice player_react_guardian2.ogg][br]This is diary 1!!!![br][br]Nice nice![br][voice player_react_guardian2.ogg][br]this is the next paragraph tha the character speaks! Fun fun speaking![br][voice player_react_guardian2.ogg][br]Now for the final thing the character says...[br][br]Arghh.... I die.... diee.....DIE!</Entry>
+		<Entry Name="Diary_Test_Text2">This is diary 2!!!![br][br]last last!</Entry>
+		
+		<Entry Name="Diary_henrydiary_Name">Henry's Diary #1 - Revelations</Entry>
+		<Entry Name="Diary_henrydiary_Text">[voice henry_diary1.ogg]The project has now officially started. All the artifacts have been acquired, and most of the preparations are complete. However, one critical aspect remains uncertain - where will we get the required souls? I know how to obtain them - the knife is used for that - but the greatest challenge lies in acquiring people for the sacrifice. The castle we occupy is deep within a forest, so bringing people here will not be easy. [br][br]I spoke with my friends and servants, Howard and Collin, and their ideas were as uncertain as mine. After some discussion, we devised a plan to acquire the first souls. Collin has two friends who live relatively nearby, and they seem like ideal candidates. Understandably, this decision was not easy for Collin - they are his friends, after all. I had to remind him of our purpose here and why this is necessary. It took him some time to process, but eventually, he agreed to the idea. [br][br][br]Collin has invited his friends to dinner tomorrow, and to our satisfaction, they accepted the invitation. Tomorrow will be the day we claim the first souls, taken from completely unaware and innocent people. Nothing can go wrong with this - and it is only the beginning.</Entry>
+		
+		<Entry Name="Diary_YZTEST_Name2">Test fuck</Entry>
+		<Entry Name="Diary_YZTEST_Text2">This will be second  fucking retard xddDD</Entry>
+		
+		
+	</CATEGORY>
+	
+	<!-- Messages -->
+	
+	<CATEGORY Name="Messages">
+	
+	
+	     <Entry Name="Startmap_planks">Blocked by these planks.</Entry>
+		 
+		 //INTRO//
+		 
+		 <Entry Name="intromessage_01">Year Zero</Entry>
+		 
+		
+		 
+		 //LIBRARY
+		 
+		 <Entry Name="coffinmessage">The coffin is sealed shut, and the smell coming from it is terrible.</Entry>
+		 <Entry Name="kendrick">Kendrick?</Entry>
+		 <Entry Name="librarydoor_message"> The door does not have a keyhole.</Entry>
+		 <Entry Name="hellno">I might have done something I can not prevent..</Entry>
+		 <Entry Name="knife_barrier">Nothing happens. There must be another way to disable the barrier.</Entry>
+		
+		 
+		 //ARCHIVES
+		 
+		 <Entry Name="hammerbroken">The hammer broke in the process.</Entry>
+		 <Entry Name="secret_door">Looks like a secret entrance.</Entry>
+		 <Entry Name="toostrong">The planks are too sturdy to be destroyed.</Entry>
+		 <Entry Name="unholy">I feel like the unholy forces did not like the cross.. </Entry>
+		 
+		 //OLD ARCHIVES
+		 
+		 <Entry Name="mainhall_locked">Some kind of a force is preventing me from opening the door.</Entry>
+		 <Entry Name="barrier_message">Another barrier seems to be blocking my way.</Entry>
+		 
+		 
+		 
+		 //LIVING QUARTERS
+		 
+		 <Entry Name="cantpull_bar">The bar fits in, but I can not pull it.</Entry>
+		 <Entry Name="calm_down">The shelf.. closed by itself?</Entry>
+		 <Entry Name="kendrickdoor_locked">The door is locked.</Entry>
+		 
+		 //SEWER
+	
+	     <Entry Name="Sewer_oil_lever_not_usable"> Pulling the lever does nothing. I suppose the machinery is missing something. </Entry> 
+		 <Entry Name="Sewer_fuel_lever_not_usable"> Pulling the lever does nothing. I suppose the machinery is missing something. </Entry>
+		 <Entry Name="Sewer_oilmessage"> A stream of oil is coming from the pipe.</Entry>
+		 <Entry Name="Sewer_machinery_not_usable">Nothing happens. Something has to be missing.</Entry>
+		 <Entry Name="Sewer_fulloffuel">I need to dispense the fuel first. </Entry>
+		 <Entry Name="Sewer_fullofoil">I need to dispense the oil first.</Entry>
+		 <Entry Name="Sewer_waytoopendoor">There must be a way to open this door.</Entry>
+		 <Entry Name="Sewer_alreadyfull">The jar is already filled with something.</Entry>
+		 
+		 //HUB
+		 
+		 <Entry Name="hub_oldarchivesdoor_locked">The door is locked.</Entry>
+		 <Entry Name="archivesdoor_locked">It is locked.</Entry>
+		 
+		 
+		 //UDNERGROUND SECTION
+		 
+		 <Entry Name="UG_droppedkey_01">Do not tell me it was the key..</Entry>
+		 <Entry Name="UG_droppedkey_02">Of course it was. I think these pipes lead to the sewer.</Entry>
+		 <Entry Name="UG_nocomingback">There is no going back now. </Entry>
+		 <Entry Name="UG_rocks_01">Looks like we are not going to the Section B. </Entry> //this one if the player has not read the note 
+		 <Entry Name="UG_rocks_02">This is probably the collapse where the people got trapped. Poor souls..</Entry> //if he has read it
+		 <Entry Name="UG_nofit_big">It does not fit. </Entry>
+		 <Entry Name="UG_nofit_small">The rod is too small. </Entry>
+		 <Entry Name="UG_leverstuck">The lever does not move. Something needs to be done with the machinery first.</Entry>
+		 <Entry Name="UG_nojar">Turning the valve without a container for the fuel would just waste it.</Entry>
+		 <Entry Name="locked">Locked.</Entry>
+		 <Entry Name="completemessage">Well done retard is complete game xD and remmeber</Entry>
+		 <Entry Name="ritualdoor">Blocked by a heavy door.</Entry>
+		 
+		 //TOWER
+		 
+		 <Entry Name="knifemessage">This artifact emits mysterious power.</Entry>
+		 
+		 //MORGUE
+		 
+		 <Entry Name="morgue_stuck">The door unlocks, but something is keeping it stuck.</Entry>
+		 
+		 <Entry Name="why">What is the point to unlock a broken door?</Entry>
+		 
+		 //MISC
+		 
+		 <Entry Name="powerup1">Powerup found! The unholy forces bless you with a lantern refill.</Entry>
+		 <Entry Name="powerup2">Powerup found! Every time you load a new map, you will gain a small oil refill.</Entry>
+		 <Entry Name="powerup3">Powerup found! This one does nothing, but at least you found it you fucking useless idiot</Entry>
+		 <Entry Name="tome_message">This is the Tome of The Other World. I better not touch it.</Entry>
+		 
+		
+	</CATEGORY> 
+
+	<!-- Voice -->
+
+	<CATEGORY Name="Voice">
+		<Entry Name="CH02L15_Alexander_01">Is he safe? Well, it's for his own good.</Entry>
+		<Entry Name="CH02L15_Alexander_02">Soon it will be ready. Let there be enough time.</Entry>
+		<Entry Name="CH02L15_Alexander_03">He escaped? Where is he now?</Entry>
+		
+		<Entry Name="YZ_Intro_01">This was supposed to be over quickly. I was just trying to find my brother Henry at his mansion in Germany, but it did not turn out to be that simple.</Entry>
+		<Entry Name="YZ_Intro_02">Apparently, he had found a strange, unnatural tome with incredible capabilities, including the Touch of Midas, the ability to transform matter, and more.</Entry>
+		<Entry Name="YZ_Intro_03">However, the one that caught his attention the most was the possibility of creating a portal to an alternative universe. He wrote in his diaries that this universe was a place of endless riches, a prosperous existence, and pure paradise - a true dreamland.</Entry>
+		<Entry Name="YZ_Intro_04">The tome had instructed him to gather four artifacts, known as the Cursed Possessions. After successfully acquiring them, he would need to sacrifice twenty innocent souls to power the portal, which would then transport him to this alternate universe.</Entry>
+		<Entry Name="YZ_Intro_05">He managed to open a smaller portal that has taken him... somewhere. I need to stop him. I am terrified, and I do not want to enter that same portal. But if I ever want to see him again and put an end to his delusional madness, what choice do I have?</Entry>
+		<Entry Name="YZ_Intro_06">I guess.. here goes nothing..</Entry>
+		
+		
+		
+		
+		
+	</CATEGORY>
+
+	<!-- Flashbacks -->
+
+	<CATEGORY Name="Flashbacks">
+		<Entry Name="CH01L00_DanielsMind01_01">Don't forget... some things mustn't be forgotten. The shadow hunting me... I must hurry.</Entry>
+		<Entry Name="CH01L00_DanielsMind02_01">My name is Daniel, I live in London at... at... Mayfair...</Entry>
+		<Entry Name="CH01L00_DanielsMind03_01">What have I done? This is crazy. Don't forget, don't forget. I must stop him. Focus!</Entry>
+		<Entry Name="CH01L00_DanielsMind04_01">My name is...is... I am Daniel.</Entry>
+	</CATEGORY>
+
+	<!-- Levels -->
+
+	<CATEGORY Name="Levels">
+		
+		<Entry Name="OldArchives">Old Archives</Entry>
+		<Entry Name="Library">Library</Entry>
+		<Entry Name="Morgue">Morgue</Entry>
+		<Entry Name="UndergroundSection">Underground Section</Entry>
+		<Entry Name="SewerSouth">Sewer - Southern Side</Entry>
+		<Entry Name="SewerNorth">Sewer - Northern Side</Entry>
+		<Entry Name="MainHall">Main Hall</Entry>
+		<Entry Name="CastleHallway">Castle Hallway</Entry>
+		<Entry Name="Study">Study</Entry>
+		<Entry Name="LivingQuarters">Living Quarters</Entry>
+		<Entry Name="Tower">Tower</Entry>
+		<Entry Name="RitualChamber">Ritual Chamber</Entry>
+		
+		
+		
+	</CATEGORY>
+
+	<!-- Hints -->
+
+	<CATEGORY Name="Death_Hints">
+		
+		<Entry Name="shock_hint">Do not touch the barrier... </Entry>
+		<Entry Name="fall_hint">Watch your step!</Entry>
+		<Entry Name="ghoul_hint">Do not outrun them, they have become too powerful... </Entry>
+		<Entry Name="sewer_hint">Do not let them see you, even for a split second...</Entry>
+		<Entry Name="key_hint">Be patient and find the pattern...</Entry>
+		<Entry Name="machine_hint">They are guarding the entrance... distract them...</Entry>
+		
+	</CATEGORY>
+	
+	<!-- Sign -->
+	
+	<CATEGORY Name="Sign">
+	
+	
+	
+	    //Library       Placing the book of Christian lies on the pedestal will reveal the path to the Knife
+		
+		<Entry Name="puzzle_01">Christian</Entry>
+		<Entry Name="puzzle_02">of</Entry>
+		<Entry Name="puzzle_03">on the pedestal</Entry>
+		<Entry Name="puzzle_04">path</Entry>
+		<Entry Name="puzzle_05">Placing</Entry>
+		<Entry Name="puzzle_06">the</Entry>
+		<Entry Name="puzzle_07">the book</Entry>
+		<Entry Name="puzzle_08">will</Entry>
+		<Entry Name="puzzle_09">reveal</Entry>
+		<Entry Name="puzzle_10">lies</Entry>
+		<Entry Name="puzzle_11">to the Knife</Entry>
+		
+		//RITUAL CHAMBER
+		
+		<Entry Name="04Sign_BlackDiamond">The valuable jewel, for the forces unholy</Entry>
+		<Entry Name="04Sign_Tome">The opus of great knowledge</Entry>
+		<Entry Name="04Sign_DemonSkull">The part of an almighty entity</Entry>
+		<Entry Name="04Sign_AncientKnife">The sharp tool for Satan</Entry>
+		
+		//START
+		
+		<Entry Name="tower_old">Old Tower</Entry>
+	
+	
+	
+	    //Sewer
+	  
+	    <Entry Name="Sewer_OilArea"> Oil </Entry>
+		<Entry Name="Sewer_FuelArea"> Fuel </Entry>
+		
+		//Underground Section
+		
+		<Entry Name="UGS_5cm"> 5 cm </Entry>
+		<Entry Name="UGS_4.4cm"> 4.4 cm </Entry>
+		<Entry Name="UGS_8cm"> 8 cm </Entry>
+		<Entry Name="UGS_2cm"> 2 cm </Entry>
+		<Entry Name="UGS_10cm"> 10 cm </Entry>	
+		<Entry Name="UGS_11cm"> 11 cm </Entry>
+		
+		<Entry Name="StorageArea">Storage Area</Entry>
+		<Entry Name="MainOffice">Main Office Room</Entry>
+		<Entry Name="Machinery">Machine / Control Rooms </Entry>
+		<Entry Name="SewerCells">Sewer / Cell Block</Entry>
+		<Entry Name="SectionB"> Section B </Entry>
+		
+		//Living Quarters
+		
+		<Entry Name="Collinn">Collin</Entry>
+		<Entry Name="Kendrickk">Kendrick</Entry>
+		<Entry Name="Howardd">Howard</Entry>
+		
+		
+		
+		
+		
+	</CATEGORY>	
+	
+
+	<!-- Emotion Stone -->
+
+	<CATEGORY Name="EmotionStone">
+		<Entry Name="Alexander01">One day I will return. If it wasn't for the thought of you, my love, I wouldn't be able to go on. When I find myself doing terrible things, I take comfort in you. [br][br]As long as I am able to think of you and long for a life together, I know I'm better than the others. I weep for them, they lust for power without restraint, where I only crave fair judgment and a safe return.</Entry>
+		<Entry Name="Alexander02">When will it be my turn? Have I not shown restraint? My patience spans centuries. From where I came, mankind is not even wasted a breath, yet I bow to you. [br][br]I have done so much for you and I have gained nothing in return. Agrippa, I trusted you. It was I who in all fairness should have entered that gate.</Entry>
+		<Entry Name="Alexander03">I fear for Daniel, for he is reckless. He is tainted by the approaching shadow and will not be able to pass the gate. Will he be able to accept this in the end? [br][br]My love, I've seen evil in him. How am I to trust him with the truth? What cruel irony that I have to do unto him what Agrippa did unto me.</Entry>
+		<Entry Name="Alexander04">In court, the order of the Black Eagle spew their politics at each other while I sit quietly in place, willfully forgotten. Once in a while someone will notice me and lose themselves in a silent cower before regaining their senses.[br][br]They all know I am the one and the same Alexander who helped their fathers and grandfathers to found this great Order. I've seen them take their fathers' places, and they too will grow old and pass away. While I remain the same, aged not by time, but by anguish.</Entry>
+		<Entry Name="Alexander05">Is it you, my love, I miss the most, or is it perhaps myself? I know what I have become, I am not blind. I am a monster to them, a demonic sultan perched on a dark mountain top. There is little I can do to redeem myself.[br] [br]The Black Eagle fears me and after Napoleon's defeat it is only a matter of time before they will demand my head on a platter. I must remove myself from this land. This time it must work. If I can't return home now, I shall perish.</Entry>
+	</CATEGORY>
+
+	<!-- Loading Text -->
+
+	<CATEGORY Name="LoadingText">
+		<Entry Name="Ch01_Beginning01">The door slammed shut behind him and he knew he would never again see the old tailor at Berkeley Square. Another lone soul in London - seemed appropriate somehow.</Entry>
+		<Entry Name="Ch01_Beginning02">The other children cheered him on. His name voiced in a steadily rising pace, urging him to do it. "Am I really doing this?", the young boy thought and struck his victim with a rock.</Entry>
+		<Entry Name="Ch01_Beginning03">He fell to the kitchen floor. Tears were beginning to well in his eyes as he received the first kick in his stomach. Hazel remained hidden, in fear she too would be punished.</Entry>
+		
+		<Entry Name="hub_text_01">The alternative universe is a price like no other, and to be forever prosperous for just twenty innocents is no price to pay..</Entry>
+		<Entry Name="hub_text_02">Endless possibilities lie in the universe.. everyone who enters the portal, shall be immortal in paradise..</Entry>
+		<Entry Name="hub_text_03">Begin the ritual. Bring the knife, bring the skull, bring the Black Diamond..</Entry>
+		
+	</CATEGORY>
+
+	<!-- Pre Menu --> 
+
+	<CATEGORY Name="PreMenu">
+		<Entry Name="WelcomeMessage01">Welcome to Amnesia: The Dark Descent! [br][br]What follows is a couple of quick messages on how to get the best possible experience.</Entry>
+		<Entry Name="WelcomeMessage02">Amnesia should not be played to win. [br][br]Instead, focus on immersing yourself in the game's world and story.</Entry>
+		<Entry Name="WelcomeMessage03">Do not worry about when and how to save during gameplay, the game will take care of that for you. [br][br]When you want to leave the game, just choose "Save and Exit". You can then use "Continue" to return to where you left off next time you start up the game.</Entry>
+		<Entry Name="WelcomeMessage04">The world of Amnesia is a dangerous place and you are extremely vulnerable. [br][br]Do not try to fight the enemies encountered. Instead, use your wits. Hide, or even run if necessary.</Entry>
+		<Entry Name="WelcomeMessage05">The interplay between light and dark is very important to the game and because of this it is vital to set up the gamma correctly. Use the slider control below to do so. Adjust it until the square at the right is barely visible. [br][br]Also make sure to play in a dark room and wear headphones for the best effect.</Entry>
+		<Entry Name="WelcomeMessage06">That is all. Hope you enjoy immersing yourself in the world of Amnesia.[br][br][br]- Frictional Games</Entry>
+	</CATEGORY>
+
+	<!-- Credits -->
+
+	<CATEGORY Name="Ending">
+		<Entry Name="MainCredits">- A FRICTIONAL GAMES PRODUCTION -[br][br][br]- AMNESIA: THE DARK DESCENT -[br][br][br]*Frictional Games Are:[br]Thomas Grip[br]Marcus Johansson[br]Luis A. Rodero Morales[br]Marc Nicander[br]Jens Nilsson[br][br][br][br][br][br]*CREDITS[br][br]*Design[br]Thomas Grip[br]Jens Nilsson[br][br]*Programming[br]Thomas Grip[br]Luis A. Rodero Morales[br][br]*Sound Engineering[br]Jens Nilsson[br][br]*Graphics[br]Marcus Johansson[br]Marc Nicander[br][br]*Level Editing[br]Marcus Johansson[br]Marc Nicander[br]Jens Nilsson[br][br]*Level Scripting[br]Thomas Grip[br]Luis A. Rodero Morales[br]Jens Nilsson[br][br]*Mac/Linux Porting[br]Edward Rudd[br][br]*Additional Graphics[br]Abyss Lights Studios[br]Rasmus Gunnarsson[br]Magnus Hertzberg[br]Nicodemus Mattisson[br]Jonas Steinick Berlin[br]Olof Strand[br]Sebastian Vasselbring[br][br]*Music[br]Mikko Tarmia[br][br]*Additional Sound Effects[br]Tapio Liukkonen - Kaamos Sound[br][br]*Writing[br]Mikael Hedberg[br][br]*Story[br]Thomas Grip[br]Mikael Hedberg[br][br]*Concept Art[br]Rasmus Gunnarsson[br]Jonas Steinick Berlin[br][br]*Voice Direction &amp; Casting[br]Lani Minella - AudioGodz[br][br]*Voice Talent[br]Richard Topping  as  Daniel[br]Sam Mowry  as  Alexander[br]Bill Corkery  as  Agrippa[br]Eric Newsome  as  Herbert[br]Lani Minella  as  Girl &amp; Mother[br]Marc Biagi  as  Innocent Man[br]Dave Rivas  as  Man In Morgue[br]Dan Zullo  as  Wilhelm &amp; Thugs[br][br]*Beta Testing[br]Anton Adamse[br]Antonio Luis Tirado Chávez[br]Agustín Cordes[br]Cedric Guillemet[br]Christopher Bates[br]Rasmus Gunnarsson[br]David Gustavsson[br]Mikael Hedberg[br]Magnus Hertzberg[br]Martin Jonsson[br]Tom Jubert[br]Aleksey Luchin[br]Kristoffer Lövgren[br]Javier Mairena[br]Nicodemus Mattisson[br]Emil Meiton[br]David Rosen[br]Michaël Samyn[br]Jonas Steinick Berlin[br]Erik Svedäng[br][br]*Special Thanks To[br]Near and dear for support and patience[br]Wolfire Games[br]Julio Jerez - Newton Game Dynamics[br]Andreas Jonsson - Angel Code[br]DevIL Image Library[br]TinyXML[br]LibSDL</Entry>
+	</CATEGORY>
+
+	<!-- Basic Phrases -->
+
+	<CATEGORY Name="BasicPhrases">
+		<Entry Name="UseItemOrCombineItem01">Better keep this for later.</Entry>
+		<Entry Name="UseItemOrCombineItem02">Can't do this right now.</Entry>
+		<Entry Name="UseItemOrCombineItem03">It is not loose enough, no need to waste more time on it.</Entry>
+	</CATEGORY>
+	
+	<CATEGORY Name="Hints">
+	    <Entry Name="ForceHint_01">The forces are keeping an eye on you.</Entry>
+		<Entry Name="ForceHint_02">The forces are confused by your actions.</Entry>
+		<Entry Name="ForceHint_03">The forces are getting angry at you. You are distrupting the balance!</Entry>
+		<Entry Name="ForceHint_04">The forces have become more powerful. They want to stop you!</Entry>
+		<Entry Name="ForceHint_05">You have gone too far. The forces have had enough.</Entry>
+		<Entry Name="ForceHint_06">They have arrived.</Entry>
+		
+		<Entry Name="CrossHint_01">During your adventure, you will occasionally run into different crosses. All of these have their own unique features, which will aid you on your journey.</Entry>
+		<Entry Name="CrossHint_02">The red cross is a sign of danger. The forces like to play with you, it may sometimes appear just to induce fear..</Entry>
+		<Entry Name="CrossHint_03">You found a powerup! Each of these give you a random benefit for your journey, from supplies to permanent perks and other useful things.</Entry>
+		
+		
+		
+	</CATEGORY>
+	
+	
+
+</LANGUAGE>

@@ -1,0 +1,264 @@
+<Level>
+    <MapData FogActive="true" FogColor="0.07 0.07 0.07 0.07" FogCulling="true" FogEnd="20" FogFalloffExp="1" FogStart="0" GlobalDecalMaxTris="300" Name="" SkyBoxActive="true" SkyBoxColor="0 0 0 1" SkyBoxTexture="../../../../../../">
+        <MapContents>
+            <FileIndex_StaticObjects NumOfFiles="69">
+                <File Id="0" Path="static_objects/amfp/castlebase/wall/welder_convex.dae" />
+                <File Id="1" Path="static_objects/amfp/castlebase/stairs/welder.dae" />
+                <File Id="2" Path="static_objects/amfp/castlebase/pillar/plain_decayed1.dae" />
+                <File Id="3" Path="static_objects/amfp/castlebase/stairs/default.dae" />
+                <File Id="4" Path="static_objects/amfp/castlebase/wall/door_frame_arched.dae" />
+                <File Id="5" Path="static_objects/amfp/castlebase/wall/default.dae" />
+                <File Id="6" Path="static_objects/amfp/castlebase/wall/default_short.dae" />
+                <File Id="7" Path="static_objects/amfp/castlebase/wall/door_way.dae" />
+                <File Id="8" Path="static_objects/amfp/castlebase/wall/door_way_arched.dae" />
+                <File Id="9" Path="static_objects/amfp/castlebase/wall/welder.dae" />
+                <File Id="10" Path="static_objects/amfp/castlebase/wall/default_broken01.dae" />
+                <File Id="11" Path="static_objects/amfp/castlebase/wall/default_broken02.dae" />
+                <File Id="12" Path="static_objects/decals/dirt_floor02.dae" />
+                <File Id="13" Path="static_objects/decals/dirt_wall_leak02.dae" />
+                <File Id="14" Path="static_objects/decals/cracks_brown02.dae" />
+                <File Id="15" Path="static_objects/amfp/castlebase/ceiling/corner_concave_short.dae" />
+                <File Id="16" Path="static_objects/amfp/castlebase/wall/default_extension.dae" />
+                <File Id="17" Path="static_objects/amfp/castlebase/ceiling/corner_convex_short.dae" />
+                <File Id="18" Path="static_objects/amfp/castlebase/wall/window_extension_blue.dae" />
+                <File Id="19" Path="static_objects/amfp/castlebase/ceiling/concave.dae" />
+                <File Id="20" Path="static_objects/decals/cobweb_01.dae" />
+                <File Id="21" Path="static_objects/decals/cobweb_02.dae" />
+                <File Id="22" Path="static_objects/amfp/castlebase/wall/door_frame.dae" />
+                <File Id="23" Path="static_objects/amfp/castlebase/ceiling/concave_short.dae" />
+                <File Id="24" Path="static_objects/decals/pool_wine02.dae" />
+                <File Id="25" Path="static_objects/decals/paper_pile.dae" />
+                <File Id="26" Path="static_objects/decals/paper_pile02.dae" />
+                <File Id="27" Path="static_objects/decals/cracks_blue03.dae" />
+                <File Id="28" Path="static_objects/decals/cracks_brown01.dae" />
+                <File Id="29" Path="static_objects/decals/cobweb_04.dae" />
+                <File Id="30" Path="static_objects/amfp/castlebase/stairs/railing.dae" />
+                <File Id="31" Path="static_objects/amfp/ornaments/curtains/curtain01_open.dae" />
+                <File Id="32" Path="static_objects/decals/cracks_brown03.dae" />
+                <File Id="33" Path="static_objects/decals/cracks_blue04.dae" />
+                <File Id="34" Path="static_objects/decals/cracks_blue02.dae" />
+                <File Id="35" Path="static_objects/amfp/ornaments/carpets/carpet02.dae" />
+                <File Id="36" Path="static_objects/amfp/ornaments/carpets/carpet04.dae" />
+                <File Id="37" Path="static_objects/amfp/ornaments/carpets/carpet01.dae" />
+                <File Id="38" Path="static_objects/amfp/ornaments/carpets/carpet03.dae" />
+                <File Id="39" Path="static_objects/amfp/castlebase/wall/door_way_large.dae" />
+                <File Id="40" Path="static_objects/amfp/castlebase/wall/door_frame_large.dae" />
+                <File Id="41" Path="static_objects/amfp/ornaments/curtains/curtain02_long_broken.dae" />
+                <File Id="42" Path="static_objects/amfp/castlebase/wall/default_extension_short.dae" />
+                <File Id="43" Path="static_objects/debris/rock/stone_large01.dae" />
+                <File Id="44" Path="static_objects/debris/rock/stone_large02.dae" />
+                <File Id="45" Path="static_objects/debris/rock/stone_med01.dae" />
+                <File Id="46" Path="static_objects/debris/rock/stone_med02.dae" />
+                <File Id="47" Path="static_objects/debris/hole/rock_straight4m.dae" />
+                <File Id="48" Path="static_objects/debris/Brick/brick.dae" />
+                <File Id="49" Path="static_objects/debris/Brick/brick_broken.dae" />
+                <File Id="50" Path="static_objects/decals/pebbles01.dae" />
+                <File Id="51" Path="static_objects/decals/web_spider01.dae" />
+                <File Id="52" Path="static_objects/decals/pebbles04.dae" />
+                <File Id="53" Path="static_objects/debris/wood/plank_2.5m_broken.dae" />
+                <File Id="54" Path="static_objects/decals/cracks_brown04.dae" />
+                <File Id="55" Path="static_objects/decals/pool_water02.dae" />
+                <File Id="56" Path="static_objects/amfp/castlebase/wall/window_blue.dae" />
+                <File Id="57" Path="static_objects/amfp/castlebase/ceiling/corridor02.dae" />
+                <File Id="58" Path="static_objects/amfp/castlebase/ceiling/corridor.dae" />
+                <File Id="59" Path="static_objects/amfp/castlebase/ceiling/corridor02_4way.dae" />
+                <File Id="60" Path="static_objects/debris/rock/stone_small01.dae" />
+                <File Id="61" Path="static_objects/amfp/castlebase/ceiling/welder_wood_edge.dae" />
+                <File Id="62" Path="static_objects/amfp/castlebase/ceiling/welder_wood_middle.dae" />
+                <File Id="63" Path="static_objects/decals/pebbles02.dae" />
+                <File Id="64" Path="static_objects/decals/pebbles03.dae" />
+                <File Id="65" Path="static_objects/debris/wood/plank_2.5m.dae" />
+                <File Id="66" Path="static_objects/debris/wood/plank_4.5m_broken.dae" />
+                <File Id="67" Path="static_objects/decals/pile_of_rags_02.dae" />
+                <File Id="68" Path="static_objects/amfp/castlebase/ceiling/welder_wood_middle_broken.dae" />
+            </FileIndex_StaticObjects>
+            <FileIndex_Entities NumOfFiles="157">
+                <File Id="0" Path="entities/amfp/storage/shelf_high02/shelf_high02.ent" />
+                <File Id="1" Path="entities/ornament/book_row03/book_row03.ent" />
+                <File Id="2" Path="entities/ornament/cross_small_metal/cross_small_metal.ent" />
+                <File Id="3" Path="entities/ornament/genie_bottle/genie_bottle.ent" />
+                <File Id="4" Path="entities/ornament/book_pile01/book_pile01.ent" />
+                <File Id="5" Path="entities/desktop/paper01/paper01.ent" />
+                <File Id="6" Path="entities/desktop/paperpile02/paperpile02.ent" />
+                <File Id="7" Path="entities/desktop/paperpile03/paperpile03.ent" />
+                <File Id="8" Path="entities/ornament/book_row02/book_row02.ent" />
+                <File Id="9" Path="entities/ornament/book_open/book_open.ent" />
+                <File Id="10" Path="entities/ornament/book_bible/book_bible.ent" />
+                <File Id="11" Path="entities/ornament/book02/book02.ent" />
+                <File Id="12" Path="entities/ornament/banners/banners02/banner_short02.ent" />
+                <File Id="13" Path="entities/ornament/book_pile02/book_pile02.ent" />
+                <File Id="14" Path="entities/amfp/storage/storage_box_wood01/storage_box_wood01.ent" />
+                <File Id="15" Path="entities/amfp/storage/storage_box_wood01/storage_box_wood01_large.ent" />
+                <File Id="16" Path="entities/ornament/goblet/goblet.ent" />
+                <File Id="17" Path="entities/amfp/amfp_ent/ornament/paintings/painting04/painting04.ent" />
+                <File Id="18" Path="entities/ornament/clock_desk/clock_desk.ent" />
+                <File Id="19" Path="entities/amfp/amfp_ent/ornament/paintings/painting01/painting01.ent" />
+                <File Id="20" Path="entities/ornament/book_row01/book_row01.ent" />
+                <File Id="21" Path="entities/amfp/amfp_ent/furniture/table_nice_round/table_nice_round.ent" />
+                <File Id="22" Path="entities/amfp/amfp_ent/furniture/chair_nice02/chair_nice02.ent" />
+                <File Id="23" Path="entities/amfp/amfp_ent/furniture/display/display_broken.ent" />
+                <File Id="24" Path="entities/door/castle_arched01/castle_arched01.ent" />
+                <File Id="25" Path="entities/ornament/book01/book01.ent" />
+                <File Id="26" Path="entities/statues/bust/bust.ent" />
+                <File Id="27" Path="entities/debris/wood/wood_beam.ent" />
+                <File Id="28" Path="entities/amfp/amfp_ent/furniture/chair_nice01/chair_nice01.ent" />
+                <File Id="29" Path="entities/debris/rock_debris/rock_debris03.ent" />
+                <File Id="30" Path="entities/debris/rock_debris/rock_debris02.ent" />
+                <File Id="31" Path="entities/decals/blood_spatter/blood_spatter04.ent" />
+                <File Id="32" Path="entities/debris/rock_debris/rock_debris01.ent" />
+                <File Id="33" Path="entities/amfp/amfp_ent/ornament/paintings/painting07/painting07.ent" />
+                <File Id="34" Path="entities/lamp/candlestick_wall/candlestick_wall_orange.ent" />
+                <File Id="35" Path="entities/amfp/storage/shelf_high01/shelf_high01.ent" />
+                <File Id="36" Path="entities/amfp/storage/storage_box_wood02/storage_box_wood02_moveable.ent" />
+                <File Id="37" Path="entities/ornament/book03/book03.ent" />
+                <File Id="38" Path="entities/ornament/arabic_statue/arabic_statue.ent" />
+                <File Id="39" Path="entities/lamp/candlestick01/candlestick01.ent" />
+                <File Id="40" Path="entities/statues/armour_nice/armour_nice_complete.ent" />
+                <File Id="41" Path="entities/ornament/pot_plant_small02/pot_plant_small02.ent" />
+                <File Id="42" Path="entities/statues/pedestal/pedestal.ent" />
+                <File Id="43" Path="entities/ornament/tome_pile02/tome_pile02.ent" />
+                <File Id="44" Path="entities/ornament/tome01/tome01.ent" />
+                <File Id="45" Path="entities/amfp/storage/basket/basket.ent" />
+                <File Id="46" Path="entities/door/castle/castle.ent" />
+                <File Id="47" Path="entities/ornament/banners/banners01/banner_short01.ent" />
+                <File Id="48" Path="entities/lamp/candle_floor/candle_floor.ent" />
+                <File Id="49" Path="entities/lamp/candle_floor/candle_floor_small.ent" />
+                <File Id="50" Path="entities/bottle/wine02/wine02.ent" />
+                <File Id="51" Path="entities/bottle/wine_stack/wine_stack.ent" />
+                <File Id="52" Path="entities/amfp/storage/shelf02/shelf02.ent" />
+                <File Id="53" Path="entities/desktop/ink_bottle/ink_bottle.ent" />
+                <File Id="54" Path="entities/desktop/paper03/paper03.ent" />
+                <File Id="55" Path="entities/ornament/tome_open02/tome_open02.ent" />
+                <File Id="56" Path="entities/ornament/tome_pile01/tome_pile01.ent" />
+                <File Id="57" Path="entities/lamp/chandelier_simple/chandelier_simple_short.ent" />
+                <File Id="58" Path="entities/ornament/banner01/banner01.ent" />
+                <File Id="59" Path="entities/lamp/candlestick_tri/candlestick_tri.ent" />
+                <File Id="60" Path="entities/item/tinderbox/tinderbox.ent" />
+                <File Id="61" Path="entities/ornament/map_prussia/map_prussia02.ent" />
+                <File Id="62" Path="entities/amfp/gameplay/ladder_moveable/ladder_grab.ent" />
+                <File Id="63" Path="entities/ornament/sketch_castle/sketch_roll_row02.ent" />
+                <File Id="64" Path="entities/ornament/sketch_castle/sketch_roll02.ent" />
+                <File Id="65" Path="entities/ornament/sketch_castle/sketch_castle01.ent" />
+                <File Id="66" Path="entities/desktop/ink_bottle/ink_bottle_broken.ent" />
+                <File Id="67" Path="entities/ornament/tome_open01/tome_open01.ent" />
+                <File Id="68" Path="entities/amfp/amfp_ent/furniture/chest_of_drawers_nice/chest_of_drawers_nice.ent" />
+                <File Id="69" Path="entities/ornament/armor/armor.ent" />
+                <File Id="70" Path="entities/ornament/arabic_carafe/arabic_carafe.ent" />
+                <File Id="71" Path="entities/ornament/shield01/shield01.ent" />
+                <File Id="72" Path="entities/amfp/amfp_ent/furniture/work_desk/work_desk.ent" />
+                <File Id="73" Path="entities/amfp/amfp_ent/furniture/work_desk/work_desk_door.ent" />
+                <File Id="74" Path="entities/amfp/technical/block_box/block_box.ent" />
+                <File Id="75" Path="entities/amfp/amfp_ent/furniture/layout_board/layout_board.ent" />
+                <File Id="76" Path="entities/door/level_hub/level_hub.ent" />
+                <File Id="77" Path="entities/amfp/amfp_ent/furniture/display/display.ent" />
+                <File Id="78" Path="entities/amfp/storage/storage_box_wood02/storage_box_wood02.ent" />
+                <File Id="79" Path="entities/ornament/banners/banners02/banner_long02.ent" />
+                <File Id="80" Path="entities/amfp/storage/shelf_thin/shelf_thin.ent" />
+                <File Id="81" Path="entities/lamp/candlestick02/candlestick02.ent" />
+                <File Id="82" Path="entities/desktop/paper02/paper02.ent" />
+                <File Id="83" Path="entities/desktop/paperpile01/paperpile01.ent" />
+                <File Id="84" Path="entities/desktop/pen_feather/pen_feather.ent" />
+                <File Id="85" Path="entities/amfp/amfp_ent/ornament/paintings/painting06/painting06.ent" />
+                <File Id="86" Path="entities/amfp/amfp_ent/furniture/chair_wood02/chair_wood02.ent" />
+                <File Id="87" Path="entities/lamp/chandelier_large/chandelier_large.ent" />
+                <File Id="88" Path="entities/amfp/amfp_ent/furniture/stool_wood/stool_wood.ent" />
+                <File Id="89" Path="entities/amfp/amfp_ent/ornament/paintings/painting_large01/painting_large03.ent" />
+                <File Id="90" Path="entities/amfp/amfp_ent/ornament/paintings/painting_large01/painting_large04.ent" />
+                <File Id="91" Path="entities/ornament/banner02/banner02.ent" />
+                <File Id="92" Path="entities/amfp/amfp_ent/furniture/table_wood01/table_wood01.ent" />
+                <File Id="93" Path="entities/ornament/arabic_statue/arabic_statue_gold.ent" />
+                <File Id="94" Path="entities/ornament/cross_small_wood/cross_small_wood.ent" />
+                <File Id="95" Path="entities/special/cave_in/cave_in.ent" />
+                <File Id="96" Path="entities/amfp/amfp_ent/furniture/sofa/sofa.ent" />
+                <File Id="97" Path="entities/amfp/amfp_ent/furniture/table_wood_small/table_wood_small.ent" />
+                <File Id="98" Path="entities/amfp/amfp_ent/furniture/chest_of_drawers_simple/chest_of_drawers_simple.ent" />
+                <File Id="99" Path="entities/amfp/amfp_ent/furniture/table_nice02/table_nice02.ent" />
+                <File Id="100" Path="entities/amfp/amfp_ent/furniture/armchair/armchair.ent" />
+                <File Id="101" Path="entities/lamp/candlestick_floor/candlestick_floor_burntout.ent" />
+                <File Id="102" Path="entities/statues/armour_rusty/armour_rusty_complete.ent" />
+                <File Id="103" Path="entities/desktop/deskpad/deskpad.ent" />
+                <File Id="104" Path="entities/debris/rock_debris/brick02.ent" />
+                <File Id="105" Path="entities/equipment/broom/broom.ent" />
+                <File Id="106" Path="entities/bottle/wine01/wine01.ent" />
+                <File Id="107" Path="entities/amfp/amfp_ent/container/vase01/vase01.ent" />
+                <File Id="108" Path="entities/amfp/amfp_ent/container/vase02/vase02.ent" />
+                <File Id="109" Path="entities/amfp/amfp_ent/container/wood_box_small01/wood_box_small01.ent" />
+                <File Id="110" Path="entities/equipment/brick/brick.ent" />
+                <File Id="111" Path="entities/equipment/wooden_board/wooden_board02.ent" />
+                <File Id="112" Path="entities/ornament/pot_plant_small01/pot_plant_small01.ent" />
+                <File Id="113" Path="entities/amfp/amfp_ent/furniture/chair_wood/chair_wood.ent" />
+                <File Id="114" Path="entities/amfp/ornament/clock_grandfather/clock_grandfather.ent" />
+                <File Id="115" Path="entities/debris/rock/rock_med02_push.ent" />
+                <File Id="116" Path="entities/debris/rock/rock_med01_push.ent" />
+                <File Id="117" Path="entities/debris/rock/stone_small01_brown.ent" />
+                <File Id="118" Path="entities/debris/rock/stone_small01.ent" />
+                <File Id="119" Path="entities/lamp/candlestick_floor/candlestick_floor.ent" />
+                <File Id="120" Path="entities/bottle/wine_row/wine_row.ent" />
+                <File Id="121" Path="entities/bottle/flask01/flask01.ent" />
+                <File Id="122" Path="entities/amfp/storage/big_wine_barrel/big_wine_barrel.ent" />
+                <File Id="123" Path="entities/amfp/amfp_ent/furniture/work_desk_worn/work_desk_worn.ent" />
+                <File Id="124" Path="entities/amfp/amfp_ent/furniture/work_desk_worn/work_desk_door_worn.ent" />
+                <File Id="125" Path="entities/ornament/sketch_castle/sketch_roll01.ent" />
+                <File Id="126" Path="entities/ornament/rolled_up_carpet/rolled_up_carpet.ent" />
+                <File Id="127" Path="entities/tool/nail/nail_static.ent" />
+                <File Id="128" Path="entities/amfp/amfp_ent/furniture/piano/piano.ent" />
+                <File Id="129" Path="entities/ptest/phonograph/phonograph.ent" />
+                <File Id="130" Path="entities/amfp/storage/shelf01/shelf01.ent" />
+                <File Id="131" Path="entities/ptest/ptest/violin/violin.ent" />
+                <File Id="132" Path="entities/ptest/ptest/violin/violin_bow.ent" />
+                <File Id="133" Path="entities/ptest/bottle_absinthe/bottle_absinthe.ent" />
+                <File Id="134" Path="entities/ptest/bottle_lithium_bromide/bottle_lithium_bromide.ent" />
+                <File Id="135" Path="entities/amfp/amfp_ent/ornament/paintings/painting_large01/painting_large01.ent" />
+                <File Id="136" Path="entities/item/wooden_bucket/wooden_bucket_object.ent" />
+                <File Id="137" Path="entities/amfp/amfp_ent/ornament/paintings/painting_large01/painting_large02.ent" />
+                <File Id="138" Path="entities/amfp/amfp_ent/furniture/stove_front02/stove_front02.ent" />
+                <File Id="139" Path="entities/amfp/amfp_ent/furniture/cabinet_simple/cabinet_simple.ent" />
+                <File Id="140" Path="entities/ornament/shield02/shield02.ent" />
+                <File Id="141" Path="entities/ornament/sketch_castle/sketch_roll_row01.ent" />
+                <File Id="142" Path="entities/ornament/sketch_castle/sketch_castle02.ent" />
+                <File Id="143" Path="entities/ornament/clothes_hook/clothes_hook.ent" />
+                <File Id="144" Path="entities/lamp/bonfire/bonfire.ent" />
+                <File Id="145" Path="entities/equipment/bellows/bellows.ent" />
+                <File Id="146" Path="entities/amfp/gameplay/treasure_chest/treasure_chest.ent" />
+                <File Id="147" Path="entities/amfp/storage/shelf_no_back/shelf_no_back.ent" />
+                <File Id="148" Path="entities/item/ceremony_knife/ceremony_knife.ent" />
+                <File Id="149" Path="entities/item/wooden_bucket/wooden_bucket.ent" />
+                <File Id="150" Path="entities/amfp/gameplay/lift_wood/lift_wood.ent" />
+                <File Id="151" Path="entities/amfp/organic/stuffed_dog/stuffed_dog.ent" />
+                <File Id="152" Path="entities/item/note_paper01/note_paper01.ent" />
+                <File Id="153" Path="entities/amfp/organic/human_bone/human_bone.ent" />
+                <File Id="154" Path="entities/item/note_scroll/note_scroll.ent" />
+                <File Id="155" Path="entities/special/orb_pedestal/orb_pedestal.ent" />
+                <File Id="156" Path="entities/item/key_tower/key_tower.ent" />
+            </FileIndex_Entities>
+            <FileIndex_Decals NumOfFiles="1">
+                <File Id="0" Path="textures/decals/dirt_stain_large.mat" />
+            </FileIndex_Decals>
+            <StaticObjects />
+            <Primitives />
+            <Decals />
+            <Entities />
+            <Misc>
+                <Compound Active="true" Group="0" ID="3237" Name="Compound_45" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="13 5.5 -51.25">
+                    <Component ID="3221" />
+                    <Component ID="3222" />
+                    <Component ID="3223" />
+                    <Component ID="3224" />
+                    <Component ID="3225" />
+                    <Component ID="3226" />
+                    <Component ID="3227" />
+                    <Component ID="3228" />
+                    <Component ID="3229" />
+                    <Component ID="3230" />
+                    <Component ID="3231" />
+                    <Component ID="3232" />
+                    <Component ID="3233" />
+                    <Component ID="3234" />
+                    <Component ID="3235" />
+                    <Component ID="3236" />
+                </Compound>
+            </Misc>
+            <StaticObjectCombos />
+        </MapContents>
+    </MapData>
+</Level>

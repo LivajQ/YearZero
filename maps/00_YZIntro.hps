@@ -1,0 +1,177 @@
+void OnStart()
+{
+	BlockHint("DarknessDecrease");
+        BlockHint("EntityGrab");
+        BlockHint("EntityLever");
+        BlockHint("EntityPush");
+        BlockHint("EntitySlide");
+        BlockHint("EntitySwingDoor");
+        BlockHint("EntityWheel");
+        BlockHint("PickLantern");
+        BlockHint("PickOil");
+        BlockHint("PickTinderbox");
+        BlockHint("QuestAdded");
+        BlockHint("RecentlyReadText");
+        BlockHint("SanityHit");
+        BlockHint("SanityLow");
+
+	//SET PLAYER UP
+
+	FadeOut(0);
+	SetPlayerMoveSpeedMul(0.35);
+	SetPlayerActive(false);
+	
+	//other stuff
+	
+	AddTimer("", 3.0f, "move"); 
+	AddTimer("", 3.0f, "voice");
+	AddTimer("", 4.0f, "fadeTimer"); 
+	
+	PlayMusic("castlehall_amb.ogg", true, 1, 5, 1, false);
+
+	/////////FIRST AREA
+	
+	AddEntityCollideCallback("Player", "start_lookarea", "startLook", true, 1);	
+	AddEntityCollideCallback("Player", "fadearea", "fade", true, 1);	     
+	AddEntityCollideCallback("Player", "fadearea_2", "fade_2", true, 1);	  
+	AddEntityCollideCallback("Player", "teleportarea", "teleport_player_01", true, 1);
+	AddEntityCollideCallback("Player", "teleportarea_2", "teleport_player_02", true, 1);
+	AddEntityCollideCallback("Player", "stopLookarea", "stopLook", true, 1);
+	AddEntityCollideCallback("Player", "portal_scriptarea", "slow", true, 1);
+	AddEntityCollideCallback("Player", "portal_enterarea", "enter", true, 1);
+	
+	/////////////////////
+}
+
+
+void enter(string &in asParent, string &in asChild, int alState)
+{	
+	StartEffectFlash(1, 1.0, 1);
+	RemoveTimer("move");
+	FadeOut(2);
+	PlaySoundAtEntity("","29_hole_open.snt","Player", 0,false);
+	AddTimer("", 4.0f, "introMessage_01");		
+}	
+
+void introMessage_01(string &in asTimer)
+{
+	SetMessage("Messages", "introMessage_01", 5);
+	AddTimer("", 7.0f, "begin");	
+}
+
+void begin(string &in asTimer)
+{
+	ChangeMap("01_YZCastleStartTest.map", "startarea_1", "", "");
+}
+
+void voice(string &in asTimer)
+{
+	AddEffectVoice("YZ_Intro_01.ogg", "", "Voice", "YZ_Intro_01", false, "", 0, 0 );
+	AddEffectVoice("YZ_Intro_02.ogg", "", "Voice", "YZ_Intro_02", false, "", 0, 0 );
+	AddEffectVoice("YZ_Intro_03.ogg", "", "Voice", "YZ_Intro_03", false, "", 0, 0 );
+	AddEffectVoice("YZ_Intro_04.ogg", "", "Voice", "YZ_Intro_04", false, "", 0, 0 );
+	AddEffectVoice("YZ_Intro_05.ogg", "", "Voice", "YZ_Intro_05", false, "", 0, 0 );
+	AddEffectVoice("YZ_Intro_06.ogg", "", "Voice", "YZ_Intro_06", false, "", 0, 0 );	
+}
+
+void slow(string &in asParent, string &in asChild, int alState)
+{
+    SetPlayerMoveSpeedMul(0.1);
+    AddTimer("", 12.0f, "slower");
+}
+
+void slower(string &in asTimer)
+{
+    SetPlayerMoveSpeedMul(0.05);
+    //AddTimer("CheckVoice", 0.1f, "stopvoice");
+}
+
+
+
+/* 
+void stopvoice(string &in asTimer)                           //does nothing
+{															 //I figured
+    if (!GetEffectVoiceActive())
+    {
+        StopAllEffectVoices(0);
+
+        
+        return;
+    }
+
+    AddTimer("CheckVoice", 0.1f, "stopvoice");
+}
+*/
+
+void teleport_player_02(string &in asParent, string &in asChild, int alState)
+{
+	StopPlayerLookAt();
+	FadeOut(3);
+	AddTimer("", 3.0f, "teleport");
+}	
+
+void teleport(string &in asTimer)
+{
+	TeleportPlayer("dungeon_area_2");
+	FadeIn(3);
+}
+
+void stopLook(string &in asParent, string &in asChild, int alState)
+{
+	StopPlayerLookAt();
+	StartPlayerLookAt("lookarea_4", 1.0f, 17.0f, "");
+}	
+
+void fade_2(string &in asParent, string &in asChild, int alState)
+{
+	FadeOut(3);
+	AddTimer("", 3.0f, "teleport_player_02");	
+	StopPlayerLookAt();
+}	
+
+void teleport_player_02(string &in asTimer)
+{
+	TeleportPlayer("dungeon_area");
+	StartPlayerLookAt("lookarea_3", 1.0f, 17.0f, "");
+	FadeIn(3);	
+}
+
+void fade(string &in asParent, string &in asChild, int alState)
+{	
+	FadeOut(3);
+	AddTimer("", 3.0f, "teleport_player_01");
+	StopPlayerLookAt();
+}	
+
+void teleport_player_01(string & in asParent, string &in asChild, int alState)
+{	
+	TeleportPlayer("cellar_area");
+	StartPlayerLookAt("lookarea_2", 1.0f, 17.0f, "");
+	FadeIn(3);
+}
+
+void startLook(string &in asParent, string &in asChild, int alState)
+{
+	StartPlayerLookAt("lookarea", 1.0f, 17.0f, "");
+}	
+
+void fadeTimer(string &in asTimer)
+{
+	FadeIn(2);	
+}
+
+void move(string &in asTimer)
+{
+	MovePlayerForward(1);
+	AddTimer("", 0.015f, "move");
+}
+
+void OnEnter()
+{
+
+}
+
+void OnLeave()
+{
+	for (int x = 0; x <= 100; x++) StopMusic(1.0F, x);
+}

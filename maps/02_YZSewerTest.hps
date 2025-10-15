@@ -1,0 +1,223 @@
+void OnStart()
+{
+	//MISC
+	
+	PlayMusic("19_amb.ogg", true, 1, 5, 1, false);
+	
+	PlayMusic("ambience_sewer_drip.ogg", true, 1, 5, 1, false); //music perhaps?
+	
+	//USEITEM CALLBACKS
+	
+	AddUseItemCallback("", "oil", "oil_area", "insert_oil", true);
+	
+	AddUseItemCallback("", "fuel", "oil_interactarea", "already_filled", false);
+	
+	AddUseItemCallback("", "glassjar", "oil_interactarea", "giveoil", true);
+	
+	AddUseItemCallback("", "fuel", "fuel_area", "insert_fuel", true);
+	
+	//COLLIDE CALLBACKS
+	
+	AddEntityCollideCallback("Player", "Brute01_SpawnArea", "Brute01_Spawn", true, 1); //first monster encounter
+	
+	AddEntityCollideCallback("Player", "chasearea", "chase", false, 1);
+	
+	//MACHINERY PUZZLE SCRIPTS
+	
+	SetGlobalVarInt("oil_lever_variable", 0);
+	
+	SetGlobalVarInt("fuel_lever_variable", 0);
+	
+	SetLocalVarInt("machinery_lever_variable", 0);
+}
+
+void giveoil(string &in asItem, string &in asEntity)
+{
+	RemoveItem(asItem);	
+	GiveItem("oil", "Puzzle", "oil", "glass_container_oil.tga", 1);
+}
+	
+void key_interact(string &in asEntity)
+{
+	SetEntityActive("chasearea", true);
+	AddPlayerSanity(25);
+	CompleteQuest("sewerkeyquest", "sewerkeyquest");	
+	
+	SetEntityActive("ghoul_sewer", true);
+	
+	CheckPoint("key_checkpoint", "key_spawn", "keydeath_function", "Death_Hints", "key_hint");
+	
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_15", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_16", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_17", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_18", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_19", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_20", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_21", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_22", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_23", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_24", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_25", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_24", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_23", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_22", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_21", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_20", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_19", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_18", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_17", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_16", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul_sewer", "PathNodeArea_15", 0.001f, "Idle");
+}
+
+void keydeath_function(string &in asName, int alCount)
+{
+	if(alCount < 15){
+		PlayMusic("19_amb.ogg", true, 1, 5, 1, false);
+        PlayMusic("ambience_sewer_drip.ogg", true, 1, 5, 1, false);
+		
+		SetEntityActive("ghoul_sewer", true);
+	}
+}
+
+void already_filled(string &in asItem, string &in asEntity)
+{
+	SetMessage("Messages", "Sewer_alreadyfull", 6);		
+}	
+
+void oilmessage(string &in asEntity)
+{
+	SetMessage("Messages", "Sewer_oilmessage", 6);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//MACHINERY PUZZLE SCRIPTS
+
+void insert_oil(string &in asItem, string &in asEntity)
+{
+    RemoveItem("oil");   
+    PlaySoundAtEntity("", "16_grease_lever", "oil_area", 0.0f, true);	
+	GiveItem("glassjar", "Puzzle", "glassjar", "glass_container_empty.tga", 1);
+	AddGlobalVarInt("oil_lever_variable", 1);
+}	
+
+void insert_fuel(string &in asItem, string &in asEntity)
+{
+    RemoveItem("fuel");   
+    PlaySoundAtEntity("", "16_grease_lever", "fuel_area", 0.0f, true);	
+	GiveItem("glassjar", "Puzzle", "glassjar", "glass_container_empty.tga", 1);
+	AddGlobalVarInt("fuel_lever_variable", 1);
+}	
+
+void oil_wheel(string &in asEntity, int alState)
+{
+	if (alState == 1)
+	{
+	    CreateParticleSystemAtEntity("oil_stream", "ps_oil_stream_from_pipe", "oil_stream_area", true);	
+        SetWheelStuckState("valve_iron_rusty02_1", 1, true);    
+		SetEntityActive("oil_interactarea", true);
+		PlaySoundAtEntity("", "16_oil_drip.snt", "oil_soundarea", 1.0f, true);	
+	}
+}	
+
+void machine_turn(string &in asEntity, int alState)                                  //this will turn on the machine once everything else has been done - wheel unstuck
+{
+	if (alState == 1 && GetLocalVarInt("machinery_lever_variable") == 0)                 
+	{
+		SetMessage("Messages", "Sewer_machinery_not_usable", 6.0f);  
+	}
+	
+	else if (alState == 1 && GetLocalVarInt("machinery_lever_variable") == 2)
+	{
+		SetLeverStuckState("machinery_lever", 1, true);
+		PlaySoundAtEntity("", "13_machine_run.snt", "machinesoundarea", 0.2f, true);
+		PlaySoundAtEntity("", "17_piston_move.snt", "machinesoundarea", 0.2f, true);
+		AddTimer("", 1.5f, "addsanity");
+		SetEntityActive("closeddoor", false);
+		SetEntityActive("opendoor", true);
+	}
+}
+
+void addsanity(string &in asTimer)
+{
+	AddPlayerSanity(25);  
+	GiveHint("ForceHint_05", "Hints", "ForceHint_05", 10);
+}	
+
+void oil_lever(string &in asEntity, int alState)
+{
+    if (alState == 1 && GetGlobalVarInt("oil_lever_variable") == 0)                 //for pulling the oil lever
+    {
+		SetMessage("Messages", "Sewer_oil_lever_not_usable", 6.0f);  
+    }
+	 
+	else if (alState == 1 && GetGlobalVarInt("oil_lever_variable") == 1)
+	{
+        SetLeverStuckState("lever_small01_2", 1, true);
+        AddLocalVarInt("machinery_lever_variable", 1);     	
+	}
+}
+
+void fuel_lever(string &in asEntity, int alState)
+{
+    if (alState == 1 && GetGlobalVarInt("fuel_lever_variable") == 0)                 //for pulling the fuel lever
+    {
+		SetMessage("Messages", "Sewer_fuel_lever_not_usable", 6.0f); 
+    }
+	 
+	else if (alState == 1 && GetGlobalVarInt("fuel_lever_variable") == 1)
+	{ 
+        SetLeverStuckState("lever_small01_1", 1, true);
+        AddLocalVarInt("machinery_lever_variable", 1);	
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SPAWN THE BRUTE AFTER ENTERING THE MACHINE CONTROL ROOM
+
+void chase(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("chaseghoul", true);
+	ShowEnemyPlayerPosition("chaseghoul");
+}
+
+void Brute01_Spawn(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("Brute_01", true); //spawns the monster
+	
+	SetEntityActive("BruteDoor", false); //sets the door inactive
+	
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_1", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_2", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_3", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_4", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_5", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_6", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_7", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_8", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_9", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_10", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_11", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_12", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_13", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_14", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_15", 0.001f, "Idle");
+	AddEnemyPatrolNode("Brute_01", "PathNodeArea_16", 0.001f, "Idle");
+}
+
+//INTERACT WITH THE SAFE DOOR
+
+void northside_safedoor_interact(string &in asEntity)
+{
+	SetMessage("Messages", "Sewer_waytoopendoor", 6.0f); 	
+}	
+
+void OnEnter()
+{
+
+}
+
+void OnLeave()
+{   
+	for (int x = 0; x <= 100; x++) StopMusic(1.0F, x);      
+}

@@ -1,0 +1,155 @@
+void OnStart()
+{
+	PlayMusic("oldarchives_lit_enzo.ogg", true, 1, 5, 2, false);
+		
+	SetEntityInteractionDisabled("artifact", true); 
+	SetEntityInteractionDisabled("ancientknife", true);//not touching the artifact or the knife
+	SetEntityInteractionDisabled("red_candle*", true); //not before activation
+	
+	AddUseItemCallback("", "ancientknife", "knife_area", "activate_candles", true);  //knife to artifact
+	SetLocalVarInt("candle_var", 0);
+	
+	AddEntityCollideCallback("Player", "barrier_area", "shock", false, 1);
+	AddEntityCollideCallback("Player", "ghoul_area", "spawn_ghoul", true, 1);
+	AddEntityCollideCallback("ghoul", "ghoul_nodearea", "reset_nodes", true, 1);
+	AddEntityCollideCallback("ghoul", "ghoul_exitarea", "ghoul_leaves", true, 1);
+}
+
+void ghoul_leaves(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("ghoul", false);
+	PlaySoundAtEntity("","door_level_cellar_open.snt", "Player", 0.0f ,false);	
+}	
+
+void reset_nodes(string &in asParent, string &in asChild, int alState)
+{	
+	ClearEnemyPatrolNodes("ghoul");
+	
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_11", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_10", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_9", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_8", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_7", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_6", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_5", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_4", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_3", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_2", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_1", 0.001f, "Idle");
+}	
+
+void spawn_ghoul(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("ghoul", true);
+	PlaySoundAtEntity("","door_level_cellar_open.snt", "Player", 0.0f ,false);
+	
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_1", 0.001f, "Flinch");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_2", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_3", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_4", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_5", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_6", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_7", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_8", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_9", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_10", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_11", 0.001f, "Idle");
+}
+
+void shock(string &in asParent, string &in asChild, int alState)
+{
+	GivePlayerDamage(30, "BloodSplat", true, true);	
+	
+	AddPlayerBodyForce(30000, 0, 0, false);
+	
+	PlaySoundAtEntity("","21_meat_snap.snt", "Player", 0.0f ,false);
+}
+
+void barrier_interact(string &in asEntity)
+{
+	SetMessage("Messages", "barrier_message", 6);
+}
+
+void candlearea1_interact(string &in asEntity)
+{
+	SetLampLit("red_candle_1", false, true);
+	AddLocalVarInt("candle_var", 1);
+	PlaySoundAtEntity("","candle_blow.snt", "Player", 0.0f ,false);
+	CompletePuzzle();	
+}	
+
+void candlearea2_interact(string &in asEntity)
+{	
+	SetLampLit("red_candle_2", false, true);
+	AddLocalVarInt("candle_var", 1);
+	PlaySoundAtEntity("","candle_blow.snt", "Player", 0.0f ,false);
+	CompletePuzzle();	
+}	
+
+void candlearea3_interact(string &in asEntity)
+{
+	SetLampLit("red_candle_3", false, true);
+	AddLocalVarInt("candle_var", 1);
+	PlaySoundAtEntity("","candle_blow.snt", "Player", 0.0f ,false);
+	CompletePuzzle();	
+}	 
+
+void candlearea4_interact(string &in asEntity)
+{
+	SetLampLit("red_candle_4", false, true);
+	AddLocalVarInt("candle_var", 1);
+	PlaySoundAtEntity("","candle_blow.snt", "Player", 0.0f ,false); 
+	CompletePuzzle();	
+}	
+
+void CompletePuzzle()
+{
+	if(GetLocalVarInt("candle_var") == 4){
+		GiveSanityBoostSmall();
+		SetEntityActive("barrier_block", false);
+		SetEntityActive("barrier_area", false);
+		DestroyParticleSystem("barrier_ps_1");
+		DestroyParticleSystem("barrier_ps_2");
+		DestroyParticleSystem("barrier_ps_3");
+		DestroyParticleSystem("barrier_ps_4");
+		SetLightVisible("barrier_light", false);
+	}	
+}
+
+void activate_candles(string &in asItem, string &in asEntity)
+{
+	RemoveItem(asItem);
+	SetEntityActive("ancientknife", true);
+	AddTimer("", 1.5f, "puzzle_start");
+}	
+
+void puzzle_start(string &in asTimer)
+{
+	PlaySoundAtEntity("", "27_orb_implode.snt", "Player", 0.0f, false);
+	GiveSanityDamage(10, true);
+	PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+	SetLampLit("candle*", false, true);
+	SetLampLit("hanging*", false, true);
+	SetLampLit("red_candle*", true, true);	
+	SetEntityActive("candlearea*", true);
+	SetEntityActive("ghoul_area", true);
+	
+	StopMusic(1.5f, 2);
+	PlayMusic("oldarchives_scary_enzo.ogg", true, 1, 5, 2, false);
+	AddTimer("", 2.0f, "activate_knife");
+}	
+
+void activate_knife(string &in asTimer)
+{
+	SetEntityInteractionDisabled("ancientknife", false);	
+}	
+
+void OnEnter()
+{
+
+}
+
+void OnLeave()
+{         
+	for (int x = 0; x <= 100; x++) StopMusic(1.0F, x);
+}

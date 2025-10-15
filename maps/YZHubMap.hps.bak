@@ -1,0 +1,457 @@
+void OnStart()
+{
+AddEntityCollideCallback("Player", "StopRest", "StopRest", false, 1);
+AddEntityCollideCallback("Player", "StopRest_1", "StopRest", false, 1);
+AddEntityCollideCallback("Player", "StopRest_2", "StopRest", false, 1);
+AddEntityCollideCallback("Player", "StopRest_3", "StopRest", false, 1);
+AddEntityCollideCallback("Player", "SecretArea1", "SecretArea", true, 1);
+AddEntityCollideCallback("Player", "SecretArea2", "SecretArea", true, 1);
+AddEntityCollideCallback("Player", "FirstTimeMusicArea", "FirstTimeMusic", true, 1);
+SetMapDisplayNameEntry("Hub");
+AutoSave();
+SetGlobalVarInt("library_var", 0);
+SetGlobalVarInt("poltergeist_int", 1);
+AddEntityCollideCallback("Player", "thunder_area", "lightning", true, 1);
+
+//GHOST STUFF
+
+AddEntityCollideCallback("Player", "ghostarea_1", "ghostevent_1", false, 1);
+AddEntityCollideCallback("Player", "ghostarea_2", "ghostevent_2", false, 1);
+AddEntityCollideCallback("Player", "ghostarea_3", "ghostevent_3", false, 1);
+AddEntityCollideCallback("Player", "ghostarea_4", "ghostevent_4", false, 1);
+AddEntityCollideCallback("Player", "poltergeist_area", "poltergeist_event", false, 1);
+AddEntityCollideCallback("Player", "mare_area", "mare_event", false, 1);
+AddEntityCollideCallback("Player", "mare_area2", "mare_event2", false, 1);
+AddEntityCollideCallback("Player", "shade_area", "shade_event", false, 1);
+AddEntityCollideCallback("Player", "krasue_area", "krasue_event", false, 1);
+
+SetGlobalVarInt("ghost", 5);
+
+
+
+
+
+//I'm adding this to separate your scripts from my scripts to avoid possible confusion // I'll also separate voids from each other with a double line of /
+
+AddUseItemCallback("", "oldarchives_key", "oldarchives_door", "unlock_oldarchives", true);
+
+AddUseItemCallback("", "archives_key", "archives_door", "unlock_archives", true);
+
+SetEntityPlayerInteractCallback("oldarchives_door", "locked_memento", true);
+
+
+
+
+
+}
+
+void unlock_archives(string &in asItem, string &in asEntity)
+
+{
+
+SetLevelDoorLocked("archives_door", false);
+
+CompleteQuest("archivesquest", "archivesquest");
+
+RemoveItem(asItem);
+
+PlaySoundAtEntity("","unlock_door","archives_door", 0,false);
+	
+}
+
+
+
+
+
+
+
+//---- Etc ----//
+//Etc events not important to the plot
+
+//Drinking the water improves health. Can be used once each time you enter the hub map
+
+void drink(string &in asEntity)
+{
+PlaySoundAtEntity("","ui_sanity_gain.snt", "Player", 0, false);
+PlaySoundAtEntity("","Drinking.snt", "Player", 0, false);
+AddPlayerHealth(20);
+SetEntityActive("DrinkArea", false);
+SetMessage("Messages", "Water", 5);
+}
+
+//Can lay down on couch
+
+void Rest(string &in asEntity)
+{
+MovePlayerHeadPos(0.0f, -1.25f, 0.0f, 1.0f, 0.5f);
+SetPlayerRunSpeedMul(0.2f);
+SetPlayerMoveSpeedMul(0.4f);
+SetPlayerLookSpeedMul(0.5f);
+SetPlayerCrouchDisabled(true);
+SetInventoryDisabled(true);
+SetLanternDisabled(true);
+SetPlayerJumpDisabled(true);
+SetPlayerCrouching(false);
+SetEntityActive("RestingArea", false);
+TeleportPlayer("PlayerRest");
+}
+
+void StopRest(string &in asParent, string &in asChild, int alState) 
+{
+SetPlayerLookSpeedMul(1.0f);
+SetPlayerCrouchDisabled(false);
+SetInventoryDisabled(false);
+SetPlayerJumpDisabled(false);
+SetLanternDisabled(false);
+SetPlayerRunSpeedMul(1.0f);
+SetPlayerMoveSpeedMul(1.0f);
+MovePlayerHeadPos(0.0, 0, 0, 1.0f, 0.5f);
+SetEntityActive("RestingArea", true);
+}
+
+//Can play on the piano like in Final Revelations
+
+void piano(string &in asEntity)
+{
+PlaySoundAtEntity("Piano", "Piano.snt", "piano", 0.0f, false);
+AddTimer("pianodone", 6, "pianodone");
+SetEntityActive("PianoArea", false);
+SetEntityActive("PianoArea2", false);
+SetEntityActive("PianoArea3", false);
+SetEntityActive("PianoArea4", false);
+SetEntityActive("PianoArea5", false);
+}
+
+void piano2(string &in asEntity)
+{
+PlaySoundAtEntity("Piano2", "Piano2.snt", "piano", 0.0f, false);
+AddTimer("pianodone", 6, "pianodone");
+SetEntityActive("PianoArea", false);
+SetEntityActive("PianoArea2", false);
+SetEntityActive("PianoArea3", false);
+SetEntityActive("PianoArea4", false);
+SetEntityActive("PianoArea5", false);
+}
+
+void piano3(string &in asEntity)
+{
+PlaySoundAtEntity("Piano3", "Piano3.snt", "piano", 0.0f, false);
+AddTimer("pianodone", 6, "pianodone");
+SetEntityActive("PianoArea", false);
+SetEntityActive("PianoArea2", false);
+SetEntityActive("PianoArea3", false);
+SetEntityActive("PianoArea4", false);
+SetEntityActive("PianoArea5", false);
+}
+
+void piano4(string &in asEntity)
+{
+PlaySoundAtEntity("Piano4", "Piano4.snt", "piano", 0.0f, false);
+AddTimer("pianodone", 6, "pianodone");
+SetEntityActive("PianoArea", false);
+SetEntityActive("PianoArea2", false);
+SetEntityActive("PianoArea3", false);
+SetEntityActive("PianoArea4", false);
+SetEntityActive("PianoArea5", false);
+}
+
+void piano5(string &in asEntity)
+{
+PlaySoundAtEntity("Piano5", "Piano5.snt", "piano", 0.0f, false);
+AddTimer("pianodone", 6, "pianodone");
+SetEntityActive("PianoArea", false);
+SetEntityActive("PianoArea2", false);
+SetEntityActive("PianoArea3", false);
+SetEntityActive("PianoArea4", false);
+SetEntityActive("PianoArea5", false);
+}
+
+void pianodone(string &in asTimer)
+{
+SetEntityActive("PianoArea", true);
+SetEntityActive("PianoArea2", true);
+SetEntityActive("PianoArea3", true);
+SetEntityActive("PianoArea4", true);
+SetEntityActive("PianoArea5", true);
+}
+
+//If hidden button is pressed, painting drops, revealing a hidden spot
+//Contains supplies for now, but can contain collectible or note in the future
+
+void painting(string &in asEntity)
+{
+PlaySoundAtEntity("","puzzle_place_jar.snt", "Player", 0, false);
+SetEntityActive("SecretPainting", false);
+SetEntityActive("SecretPainting2", true);
+SetMessage("Messages", "Secret", 5);
+}
+
+void SecretArea(string &in asParent, string &in asChild, int alState) 
+{
+SetMessage("Messages", "Secret", 5);
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void archives_doorinteract(string &in asentity)
+
+{
+
+ AddQuest("archivesquest", "archivesquest");
+
+}
+
+
+void ghostevent_1(string &in asParent, string &in asChild, int alState) 
+
+{
+	
+SetLocalVarInt("ghostevent_1_var", RandInt(1, 15));
+
+if(GetLocalVarInt("ghostevent_1_var") == 1){
+	AddPropForce("human_skull_1", 0, 0, -500, "world");
+   }
+
+}
+
+void ghostevent_2(string &in asParent, string &in asChild, int alState) 
+
+{
+	
+SetLocalVarInt("ghostevent_2_var", RandInt(1, 15));
+
+if(GetLocalVarInt("ghostevent_2_var") == 2){
+	AddPropForce("goblet_1", 0, 50, 200, "world");
+   }
+
+}
+
+void ghostevent_3(string &in asParent, string &in asChild, int alState) 
+
+{
+	
+SetLocalVarInt("ghostevent_3_var", RandInt(1, 15));
+
+if(GetLocalVarInt("ghostevent_3_var") == 2){
+	AddPropForce("ink_bottle_6", 0, 50, -50, "world");
+   }
+
+}
+
+void ghostevent_4(string &in asParent, string &in asChild, int alState) 
+
+{
+	
+SetLocalVarInt("ghostevent_4_var", RandInt(1, 2));
+
+if(GetLocalVarInt("ghostevent_4_var") == 2){
+	AddPropForce("book01_1", 200, 400, 800, "world");
+   }
+
+}
+
+void poltergeist_event(string &in asParent, string &in asChild, int alState) 
+
+{
+
+    if (GetGlobalVarInt("ghost") == 1){
+	SetLocalVarInt("poltergeist_int", RandInt(1, 2));
+	AddTimer("", 0.5f, "ghostcheck"); 
+  }	
+
+}
+
+
+
+void ghostcheck(string &in asTimer)
+
+{
+	
+if (GetLocalVarInt("poltergeist_int") == 1){
+	AddPropForce("arabic_statue_1", 0, 50, 500, "world");
+	AddPropForce("goblet_1", 0, 50, 500, "world");
+	AddPropForce("goblet_3", 0, 50, 500, "world");
+	AddPropForce("sketch_roll02_1", 0, 50, 500, "world");
+	
+   }	
+
+}
+
+void mare_event(string &in asParent, string &in asChild, int alState) 
+
+{
+	
+	
+if (GetGlobalVarInt("ghost") == 3){ 	
+
+    SetLocalVarInt("mare_int", RandInt(1, 2));
+	
+   }	
+
+	
+if (GetLocalVarInt("mare_int") == 1){
+
+
+    SetLampLit("torch_static01_1", false, true);
+
+   }
+   
+}   
+
+void mare_event2(string &in asParent, string &in asChild, int alState) 
+
+{
+	
+	
+if (GetGlobalVarInt("ghost") == 3){ 	
+
+    SetLocalVarInt("mare_int2", RandInt(1, 2));
+	
+   }	
+
+	
+if (GetLocalVarInt("mare_int2") == 1){
+
+
+    SetLampLit("bonfire_1", false, true);
+
+   }
+   
+}   
+
+void shade_event(string &in asParent, string &in asChild, int alState)
+
+{   
+   if(GetGlobalVarInt ("ghost") == 4){
+	   
+	  SetLocalVarInt("shade_int", RandInt(1,12));
+
+    }	  
+
+    if(GetLocalVarInt("shade_int") == 1){
+		
+		SetEntityActive("debris_*", true);
+		
+	}
+
+
+}
+
+void krasue_event(string &in asParent, string &in asChild, int alState)
+
+{   
+   if(GetGlobalVarInt ("ghost") == 5){
+	   
+	  SetLocalVarInt("krasue_int", RandInt(1,2));
+
+    }	  
+
+    if(GetLocalVarInt("krasue_int") == 1){
+		
+		PlaySoundAtEntity("", "15_girl_cry.snt", "Player", 0.0f, false);
+		GiveSanityDamage(50, false);
+		
+	}
+	
+	if(GetLocalVarInt("krasue_int") == 2){
+		
+		PlaySoundAtEntity("", "00_laugh.snt", "Player", 0.0f, false);
+		AddPlayerSanity(50);
+		
+	}
+
+
+}
+
+void lightning(string &in asParent, string &in asChild, int alState)
+
+{
+
+SetLightVisible("thunderlight", true);
+AddTimer("", 0.03f, "lightning2");
+
+}
+
+void lightning2(string &in asTimer)
+
+{
+
+SetLightVisible("thunderlight", false);
+AddTimer("", 0.03, "lightning3");	
+
+}
+
+void lightning3(string &in asTimer)
+
+{
+
+SetLightVisible("thunderlight", true);
+AddTimer("", 0.03f, "lightning4");	
+
+}
+
+void lightning4(string &in asTimer)
+
+{
+
+SetLightVisible("thunderlight", false);
+AddTimer("", 2.0f, "thundersound");
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void locked_memento(string &in asEntity)
+
+{
+
+SetMessage("Messages", "oldarchivesdoor_locked", 6);
+
+AddQuest("unlock_archives", "unlock_archives");
+
+}
+
+void unlock_oldarchives(string &in asItem, string &in asEntity)
+
+{
+	
+SetLevelDoorLocked("oldarchives_door", false);
+
+RemoveItem(asItem);
+
+GiveSanityBoostSmall();
+
+CompleteQuest("unlock_archives", "unlock_archives");	
+
+PlaySoundAtEntity("","unlock_door","oldarchives_door", 0,false);
+	
+}	
+
+
+
+void OnEnter()
+{	
+AutoSave();
+SetMapDisplayNameEntry("Hub");
+SetEntityActive("DrinkArea", true);
+SetLightVisible("thunderlight", false);
+}
+
+void OnLeave()
+{
+StopMusic(10, 0);
+SetupLoadScreen("loadscreentext", "...", 1, "load_hotel.png");
+}

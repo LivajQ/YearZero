@@ -1,0 +1,159 @@
+void OnStart()
+{
+
+//MUSIC
+
+PlayMusic("04_amb.ogg", true, 1, 5, 1, false);
+PreloadSound("general_thunder.snt");
+
+//MISCELLANEOUS
+
+SetEntityInteractionDisabled("mansion_1", true); 
+SetEntityInteractionDisabled("decoyhammer", true); 
+SetEntityActive("decoyhammer", false);
+SetLightVisible("thunder_light", false);
+AddEntityCollideCallback("Player", "thunder_area", "lightning", true, 1); //lightning event
+
+//USEITEM CALLBACKS
+
+AddUseItemCallback("", "weakhammer", "hammerarea", "destroyplanks", true);	
+
+}
+
+void lightning(string &in asParent, string &in asChild, int alState)
+
+{
+
+SetLightVisible("thunder_light", true);
+AddTimer("", 0.03f, "lightning2");
+
+}
+
+void lightning2(string &in asTimer)
+
+{
+
+SetLightVisible("thunder_light", false);
+AddTimer("", 0.03, "lightning3");	
+
+}
+
+void lightning3(string &in asTimer)
+
+{
+
+SetLightVisible("thunder_light", true);
+AddTimer("", 0.03f, "lightning4");	
+
+}
+
+void lightning4(string &in asTimer)
+
+{
+
+SetLightVisible("thunder_light", false);
+AddTimer("", 2.0f, "thundersound");
+
+}
+
+void thundersound(string &in asTimer)
+
+{
+	
+PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);	
+	
+}
+
+void drop_rock(string &in asParent, string &in asChild, int alState)
+
+{
+
+SetEntityActive("rock_falling", true);
+	
+}
+
+
+
+void destroyplanks(string &in asItem, string &in asEntity)
+
+{
+	
+FadeOut(1);
+AddTimer("", 2.0f, "smash");
+SetPlayerActive(false);
+SetEntityActive("hammerarea", false);
+
+}
+
+void smash (string &in asTimer)
+
+{
+
+PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+AddTimer("", 1.0f, "smash2");
+
+}	
+	
+void smash2 (string &in asTimer)
+
+{
+
+PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+AddTimer("", 1.0f, "smash3");
+
+}	
+
+void smash3 (string &in asTimer)
+
+{
+
+PlaySoundAtEntity("", "hit_wood.snt", "Player", 0.0f, true);	
+AddTimer("", 1.0f, "complete");
+
+}	
+
+void complete(string &in asTimer)
+
+{
+	
+SetPlayerActive(true);
+FadeIn(1);
+SetEntityActive("brokenplanks", true);
+SetEntityActive("planks", false);
+SetEntityInteractionDisabled("mansion_1", false); 
+SetEntityActive("decoyhammer", true);
+	
+}	
+
+
+
+void plank_interact(string &in asEntity)
+
+{
+
+AddQuest("planks", "planks");	
+SetMessage("Messages", "Startmap_planks", 6);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void OnEnter()
+{
+}
+
+void OnLeave()
+{         
+}

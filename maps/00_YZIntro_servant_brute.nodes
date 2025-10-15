@@ -1,0 +1,18 @@
+<AINodes>
+    <Node Name="Track4" ID="2370">
+        <Edge Node="Track2" Distance="2.69258236885070800000" />
+    </Node>
+    <Node Name="Track" ID="2376">
+        <Edge Node="Track2" Distance="6.02079725265502930000" />
+    </Node>
+    <Node Name="Track2" ID="2380">
+        <Edge Node="Track4" Distance="2.69258236885070800000" />
+        <Edge Node="Track" Distance="6.02079725265502930000" />
+    </Node>
+    <Node Name="Track3" ID="2421">
+        <Edge Node="Track2" Distance="9.89009857177734370000" />
+    </Node>
+    <Node Name="halluci1" ID="2454">
+        <Edge Node="Track3" Distance="8.23255538940429690000" />
+    </Node>
+</AINodes>

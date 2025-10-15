@@ -1,0 +1,262 @@
+////////////////////////////
+void OnStart()
+{
+	
+for(int x = 1; x<5; x++){
+                             
+    AddEntityCollideCallback("Player", "windarea_"+x, "playwind", true, 1);  //actually plays thunder, but whatever
+	
+	}	
+	
+AddEntityCollideCallback("Player", "player_normalarea", "change_player", true, 1);	
+
+SetGlobalVarInt("ghost", RandInt(1, 7));
+		
+      
+AddTimer("", 0.5f, "lightsout");  //stupid workaround to get lights off	  
+	   
+//begin the intro//	 
+
+	   
+
+
+
+
+}
+
+void change_player(string &in asParent, string &in asChild, int alState) //this will revert the player back to normal aside for movement speed
+
+{
+
+FadeImageTrailTo(0, 5);
+
+FadeRadialBlurTo(0, 5);
+
+SetPlayerMoveSpeedMul(0.7);
+
+SetPlayerRunSpeedMul(0.7);
+
+SetLocalVarInt("book", RandInt(1, 50));
+
+if (GetLocalVarInt ("book") == 2){
+	AddPropForce("testbook", -400, 40, 40, "world");
+}
+	
+
+
+
+}	
+
+void ghostcheck (string &in asEntity)
+
+{
+
+ if(GetGlobalVarInt ("ghost") == 1){
+	 
+	SetMessage("Messages", "poltergeist", 6);
+	
+    }
+	
+ else if(GetGlobalVarInt ("ghost") == 2){
+	 
+	SetMessage("Messages", "demon", 6);
+	
+    }
+
+ else if(GetGlobalVarInt ("ghost") == 3){
+	 
+	SetMessage("Messages", "mare", 6);
+	
+    }
+	
+ else if(GetGlobalVarInt ("ghost") == 4){
+	 
+	SetMessage("Messages", "shade", 6);
+	
+    }	
+	
+ else if(GetGlobalVarInt ("ghost") == 5){
+	 
+	SetMessage("Messages", "krasue", 6);
+	
+    }	
+	
+ else if(GetGlobalVarInt ("ghost") == 6){
+	 
+	SetMessage("Messages", "strigoi", 6);
+	
+    }	
+	
+ else if(GetGlobalVarInt ("ghost") == 7){
+	 
+	SetMessage("Messages", "ikiryo", 6);
+	
+    }	
+	
+}
+
+
+
+
+
+void playwind(string &in asParent, string &in asChild, int alState) //actually plays the thunder instead of the wind
+
+{
+	
+PlaySoundAtEntity("","general_thunder.snt", "Player", 0.0f ,false);
+	
+}
+
+
+
+/////////////////////////////////////
+//////////////ENTIRE WAKE UP SEQUENCE
+
+void wakeup_01(string &in asTimer)
+
+{
+		
+
+FadeIn(15);
+
+StopPlayerLookAt();
+
+AddTimer("", 4.0f, "wakeup_02"); 
+	
+}
+
+void wakeup_02(string &in asTimer)
+
+{
+
+FadeOut(4);
+
+AddTimer("", 2.0f, "wakeup_03"); 
+
+AddTimer("", 2.0f, "lightson");
+	
+}
+
+void wakeup_03(string &in asTimer)
+
+{
+	
+FadeIn(12);
+
+AddTimer("", 5.0f, "wakeup_04"); 
+	
+}
+
+void wakeup_04(string &in asTimer)
+
+{
+	
+StartPlayerLookAt("startarea_2", 2.0f, 2.0f, "");
+
+FadeOut(15);
+
+AddTimer("", 6.0f, "wakeup_05");
+
+
+}
+
+
+void wakeup_05(string &in asTimer)
+
+{
+	
+StopPlayerLookAt();
+
+FadeIn(7);	
+
+AddTimer("", 6.0f, "wakeup_06");
+	
+}
+
+
+void wakeup_06(string &in asTimer)
+
+{
+	
+SetPlayerActive(true);
+
+SetPlayerCrouching(false);	
+	
+}
+
+
+
+void lightsout(string &in asTimer)
+
+{
+
+for(int x = 1; x<13; x++){
+                             
+    SetLightVisible("flickerlamp_"+x, false); 
+	
+	}	
+
+}
+
+
+void lightson(string &in asTimer)
+
+{
+	
+for(int x = 1; x<13; x++){
+                             
+    SetLightVisible("flickerlamp_"+x, true); 
+	
+	}	
+
+AddTimer("", 6.0f, "lightsout_2");
+	
+}	
+
+void lightsout_2(string &in asTimer)
+
+{
+	
+for(int x = 1; x<13; x++){
+                             
+    SetLightVisible("flickerlamp_"+x, false); 
+	
+	}	
+}
+
+void thunder_01(string &in asTimer)
+
+{
+
+PlaySoundAtEntity("", "general_thunder.snt", "Player", 0.0f, false);
+
+}
+
+void plank_interact(string &in asEntity)
+
+{
+	
+SetMessage("Messages", "Startmap_planks", 6);
+
+}
+
+
+
+// Run when entering map
+void OnEnter()
+{
+
+}
+ 
+////////////////////////////
+// Run when leaving maps
+void OnLeave()
+{
+ 
+}
+
+
+void ded(string &in asTimer)
+{
+    GivePlayerDamage(200.0f, "BloodSplat", false, true);  //thank you livajo <3
+}

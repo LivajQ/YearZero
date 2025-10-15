@@ -1,0 +1,81 @@
+void OnStart()
+{
+	SetEntityInteractionDisabled("door_broken1", true);
+	
+	AddEntityCollideCallback("Player", "ghoul_alertarea", "alert", false, 1);
+	
+	AddUseItemCallback("", "morgue_masterkey", "locked_door_1", "unlock_door_1", true);
+	
+	AddUseItemCallback("", "morgue_masterkey", "locked_door_2", "unlock_door_2", true);
+	
+	AddUseItemCallback("", "morgue_masterkey", "locked_door_3", "unlock_door_3", true); //stuck door
+	
+	AddUseItemCallback("", "morgue_masterkey", "door_broken1", "dumbass", true);
+}
+
+void dumbass(string &in asItem, string &in asEntity)
+{
+	SetMessage("Messsages", "why", 6.0f);	
+}
+
+void unlock_door_1(string &in asItem, string &in asEntity)
+{
+	SetSwingDoorLocked("locked_door_1", false, true);
+	PlaySoundAtEntity("","unlock_door","locked_door_1", 0,false);
+}
+
+void unlock_door_2(string &in asItem, string &in asEntity)
+{
+	SetSwingDoorLocked("locked_door_2", false, true);
+	PlaySoundAtEntity("","unlock_door","locked_door_2", 0,false);
+}
+
+void unlock_door_3(string &in asItem, string &in asEntity)
+{
+	SetSwingDoorLocked("locked_door_3", true, true);
+	PlaySoundAtEntity("","unlock_door","locked_door_3", 0,false);
+	SetEntityPlayerInteractCallback("locked_door_3", "stuck_message", false);
+}
+
+void stuck_message(string &in asEntity)
+{
+	SetMessage("Messages", "morgue_stuck", 6.0f);
+}
+
+void alert(string &in asParent, string &in asChild, int alState)
+{
+	AlertEnemyOfPlayerPresence("ghoul");
+}	
+
+void skull_interact(string &in asEntity)
+{
+	CheckPoint("ghoul_checkpoint", "ghouldeath_spawn", "ghouldeath_function", "Death_Hints", "ghoul_hint");
+	
+	SetPropHealth("locked_door_3", 0);
+		
+	SetEntityActive("ghoul", true);
+	
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_1", 0.001f, "Flinch");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_2", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_3", 0.001f, "Idle");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_2", 0.001f, "Flinch");
+	AddEnemyPatrolNode("ghoul", "PathNodeArea_1", 0.001f, "Idle");	
+}	
+
+void ghouldeath_function(string &in asName, int alCount)
+{
+	if(alCount < 15){
+		PlayMusic("library_enzo.ogg", true, 0.5, 5, 1, false);
+		SetEntityActive("ghoul", true);
+	}			
+}
+
+void OnEnter()
+{
+
+}
+
+void OnLeave()
+{
+	for (int x = 0; x <= 100; x++) StopMusic(1.0F, x);
+}

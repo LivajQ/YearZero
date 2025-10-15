@@ -1,0 +1,51 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                             ///SCRIPT MADE BY - Sabatu (not actually) ///
+///-------------------------------------------------------------------------------------------------------------------///
+
+////////////////////////////
+// Run when leaving map
+void OnLeave()
+{
+
+}
+////////////////////////////
+// Run when entering map
+void OnEnter()
+{
+
+}
+////////////////////////////
+// Run first time starting map
+void OnStart()
+{
+	GiveItemFromFile("lantern", "lantern.ent");
+	SetEntityInteractionDisabled("emotion_stone_1", true);
+	AddUseItemCallback("", "ancientknife", "knifearea", "disable_barrier", true);
+	
+}
+void knifearea_interact (string &in asEntity)
+
+{
+	
+SetMessage("Messages", "knifemessage", 6);
+	
+}
+
+void disable_barrier(string &in asItem, string &in asEntity)	
+
+{
+	
+RemoveItem(asItem);
+SetEntityInteractionDisabled("ancientknife", true);
+SetEntityActive("ancientknife", true);
+AddTimer("", 3.0f, "remove_barrier");
+
+}
+
+void remove_barrier(string &in asTimer)
+
+{
+	
+PlaySoundAtEntity("27_orb_implode",".snt", "Player", 0.0f ,false);	
+
+}

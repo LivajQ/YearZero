@@ -1,0 +1,321 @@
+void OnStart()
+{
+	
+//GENERAL	library_amb.ogg
+	
+PlaySoundAtEntity("electric", "27_spark.snt", "electric_area", 0.0f, false);
+
+PlayMusic("library_amb.ogg", true, 0.5, 5, 1, false);
+
+AddGlobalVarInt("library_var", 0);
+
+CheckPoint("shock_checkpoint", "shockdeath_spawn", "shockdeath_function", "Death_Hints", "shock_hint");
+
+
+//PUZZLES
+
+for(int x = 1; x<30; x++){
+                             
+    AddEntityCollideCallback("book_bible_"+x, "biblearea", "placebible", true, 1);    //any bible will do the job
+	
+	}
+
+AddEntityCollideCallback("bone", "bonearea", "placebone", true, 1); //puzzle
+
+SetLocalVarInt("library_variable", 0); // ?
+
+AddEntityCollideCallback("Player", "electric_area", "shock", false, 1); //shock the player
+
+AddEntityCollideCallback("Player", "satanic_area", "satanic_event", true, 1); //tbe event when you leave the coffin room
+
+SetEntityInteractionDisabled("fake_bone", true); //can not interact before you read the poem note
+
+SetEntityInteractionDisabled("clash", true); //the broken door at the library
+
+SetEntityInteractionDisabled("castle_arched01_5", true); //can not interact before removing the barrier
+
+
+}
+
+void powerup(string &in asEntity)
+{
+    SetLocalVarInt("powerup", RandInt(1, 3));
+
+    if (GetLocalVarInt("powerup") == 1) {
+        SetMessage("Messages", "powerup1", 6);
+		SetPlayerLampOil(100);
+    }
+
+    if (GetLocalVarInt("powerup") == 2) {
+        SetMessage("Messages", "powerup2", 6);
+    }
+
+    if (GetLocalVarInt("powerup") == 3) {
+        SetMessage("Messages", "powerup3", 6);
+    }
+}
+
+
+void satanic_event(string &in asParent, string &in asChild, int alState) //RELEASE THE BEAST
+
+{
+	
+FadePlayerFOVMulTo(2, 1);
+PlaySoundAtEntity("","25_guardian_slime_appear.snt", "Player", 0.0f ,false);
+MovePlayerHeadPos(0.0f, -1.25f, 0.0f, 1.0f, 0.5f);
+SetPlayerRunSpeedMul(0.0f);
+SetPlayerMoveSpeedMul(0.0f);
+FadePlayerRollTo(-60, 10, 25);
+SetPlayerCrouchDisabled(true);
+SetFogColor(100, 0, 0, 0.5);
+SetPlayerActive(false);
+FadeOut(4);
+AddTimer("", 8.5f, "satanic_event_2");
+}	
+
+void satanic_event_2(string &in asTimer)
+
+{
+	
+AddTimer("", 6.0f, "satanic_event_3");
+FadeIn(6);
+StartPlayerLookAt("decoy", 1.0f, 17.0f, "");
+AddEnemyPatrolNode("Brute1", "Node1", 0, "Idle");
+
+}
+
+void satanic_event_3(string &in asTimer)
+
+{
+	
+StopPlayerLookAt();
+StartPlayerLookAt("lift_wood_1", 1.0f, 17.0f, "");
+SetEntityActive("decoybrute", true);
+AddEnemyPatrolNode("decoybrute", "path_1", 0, "Idle");
+FadePlayerFOVMulTo(0.8, 1);
+AddTimer("", 5.0f, "satanic_event_4");
+
+	
+}
+
+void satanic_event_4(string &in asTimer)
+
+{
+	
+StopPlayerLookAt();
+AddTimer("", 5.0f, "satanic_event_5");
+
+}
+
+void satanic_event_5(string &in asTimer)
+
+{
+	
+FadePlayerFOVMulTo(1, 1);	
+FadeOut(2);
+AddTimer("", 5.0f, "satanic_event_6");
+	
+}
+
+void satanic_event_6(string &in asTimer)
+
+{
+	
+FadeIn(4);
+AddTimer("", 4.0f, "satanic_event_7");
+SetFogColor(0.18, 0.18, 0.18, 0.18);
+	
+}
+
+
+void satanic_event_7(string &in asTimer)
+
+{
+
+SetPlayerActive(true);
+FadePlayerRollTo(0.0f, 1.0f, 33.0f);
+MovePlayerHeadPos(0.0, 0, 0, 1.0f, 0.5f);
+SetPlayerRunSpeedMul(1.0f);
+SetPlayerMoveSpeedMul(1.0f);
+AddTimer("", 4.0f, "satanic_event_8");
+	
+}
+	
+void satanic_event_8(string &in asTimer)
+
+{
+	
+SetMessage("Messages", "hellno", 6);
+	
+}
+	
+	
+
+
+void library_doorinteract(string &in asEntity)
+
+{
+	
+   if(GetSwingDoorLocked("office_door")==true){
+	   
+        SetMessage("Messages", "librarydoor_message", 6); 
+		AddQuest("mechanical", "mechanical");
+    }	
+	
+}
+
+
+void coffin_event(string &in asEntity)
+
+{
+	
+SetPlayerActive(false);
+SetInventoryDisabled(true);
+AddTimer("", 3.0f, "question_sequence");
+
+}
+
+void question_sequence(string &in asTimer)
+
+{
+	
+SetMessage("Messages", "kendrick", 6);
+AddTimer("", 3.0f, "freeplayer_sequence");	
+StartPlayerLookAt("coffinarea", 2.0f, 17.0f, "");	
+}	
+
+void freeplayer_sequence(string &in asTimer)
+
+{
+	
+SetPlayerActive(true);
+SetInventoryDisabled(false);
+StopPlayerLookAt();
+SetEntityActive("satanic_area", true);
+
+}
+
+
+void coffininteract(string &in asEntity)
+
+{
+	
+SetMessage("Messages", "coffinmessage", 6);
+	
+}
+
+
+
+
+void shock(string &in asParent, string &in asChild, int alState)
+
+{
+	
+GivePlayerDamage(100, "BloodSplat", true, true);	
+
+AddPlayerBodyForce(50000, 0, 0, false);
+
+AddQuest("electric_barrier", "electric_barrier");
+
+PlaySoundAtEntity("","21_meat_snap.snt", "Player", 0.0f ,false);
+
+	
+}
+
+void shockdeath_function(string &in asName, int alCount)
+
+{
+	
+	if(alCount < 15){
+		
+		PlayMusic("library_amb.ogg", true, 0.5, 5, 1, false);
+		
+	}			
+}
+	
+
+
+void placebible(string &in asParent, string &in asChild, int alState)
+
+{
+	
+SetEntityActive("fake_bible", true);
+
+AddLocalVarInt("library_variable", 1);
+
+for(int x = 1; x<30; x++){
+	
+	SetEntityActive("book_bible_"+x, false);
+	
+    }
+	
+CompleteLibraryPuzzle();	
+	
+}
+
+void placebone(string &in asParent, string &in asChild, int alState)
+
+{
+	
+SetEntityActive("bone", false);
+
+SetEntityActive("fake_bone", true);
+
+AddLocalVarInt("library_variable", 1);
+
+CompleteLibraryPuzzle();
+
+}
+
+
+void CompleteLibraryPuzzle()
+
+{
+	
+if(GetLocalVarInt("library_variable") == 2){
+
+  SetSwingDoorLocked("office_door", false, true);	
+  
+  CompleteQuest("mechanical", "mechanical");
+  
+  GiveSanityBoostSmall();
+  
+  }
+	
+	
+}
+
+void interact_dognote(string &in asEntity)
+
+{
+	
+SetEntityInteractionDisabled("fake_bone", false);
+
+}
+
+
+
+
+void OnEnter()
+
+{
+	
+if(GetGlobalVarInt("library_var") == 1){
+  
+   DestroyParticleSystem("ParticleSystem_24");
+   DestroyParticleSystem("ParticleSystem_25");
+   DestroyParticleSystem("ParticleSystem_26");
+   DestroyParticleSystem("ParticleSystem_27");
+   SetEntityActive("electric_area", false);
+   SetEntityActive("electric_block", false);
+   StopSound("electric", 1);
+   SetLightVisible("PointLight_29", false);
+   SetEntityInteractionDisabled("castle_arched01_5", false);
+   
+   }	
+	
+}
+
+void OnLeave()
+{         
+}
